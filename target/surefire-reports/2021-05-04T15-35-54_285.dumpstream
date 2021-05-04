@@ -1,0 +1,15 @@
+# Created at 2021-05-04T15:35:55.617
+WARNING: An illegal reflective access operation has occurred
+
+# Created at 2021-05-04T15:35:55.617
+WARNING: Illegal reflective access by com.mercadolibre.desafiofinaljosejimenez.unit.ScopeUtilTest (file:/Users/herjimenez/Documents/Project-Fury/desafiofinal/desafiofinaljosejimenez/target/test-classes/) to field java.lang.reflect.Field.modifiers
+
+# Created at 2021-05-04T15:35:55.617
+WARNING: Please consider reporting this to the maintainers of com.mercadolibre.desafiofinaljosejimenez.unit.ScopeUtilTest
+
+# Created at 2021-05-04T15:35:55.618
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+
+# Created at 2021-05-04T15:35:55.618
+WARNING: All illegal access operations will be denied in a future release
+
