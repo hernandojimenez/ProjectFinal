@@ -42,8 +42,6 @@ y
 Isrc/main/java/com/mercadolibre/desafiofinaljosejimenez/model/StockCM.java,1/e/1edef2939671baa9c4f03aea20a8d566533380ea
 ~
 Nsrc/main/java/com/mercadolibre/desafiofinaljosejimenez/model/ShippingType.java,0/e/0eac9303d0af60409958f896fbb64109d94d3b60
-y
-Isrc/main/java/com/mercadolibre/desafiofinaljosejimenez/model/Carrier.java,6/8/6872ca76314361278fd0eb9c326fc7e3f3bcd0c5
 Å
 Qsrc/main/java/com/mercadolibre/desafiofinaljosejimenez/model/SubsidiaryStock.java,e/0/e0e512846f9c0b2cfec7e7e7d95af3653cd4e26b
 |
