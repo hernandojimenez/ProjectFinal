@@ -11,14 +11,19 @@ public class PartRecord {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false)
     private Date lastModification;
 
+    @Column(nullable = false)
     private double normalPrice;
 
+    @Column(nullable = false)
     private double salePrice;
 
+    @Column(nullable = false)
     private double urgentPrice;
 
+    @Column(nullable = false)
     private String modifiedField;
 
     @ManyToOne

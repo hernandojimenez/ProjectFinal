@@ -10,7 +10,7 @@ public class StockCM {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
+    @Column(nullable = false)
     private int quantity;
 
     @OneToOne(cascade = CascadeType.ALL)
