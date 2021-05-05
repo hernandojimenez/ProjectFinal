@@ -1,5 +1,8 @@
 package com.mercadolibre.desafiofinaljosejimenez.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -11,33 +14,40 @@ public class Part {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "part_code")
+    @Column(name = "part_code", nullable = false, length = 8)
     private int partCode;
 
-    @Column
+    @Column(nullable = false)
     private String description;
 
-    @Column
+    @Column(nullable = false)
     private int widthDimension;
 
-    @Column
+    @Column(nullable = false)
     private int tallDimension;
 
-    @Column
+    @Column(nullable = false)
     private int longDimension;
 
-    @Column
+    @Column(nullable = false)
     private int netWeight;
 
-    @OneToOne(mappedBy = "part")
+    @OneToOne(mappedBy = "part",cascade = CascadeType.ALL)
     private StockCM stockCM;
 
     @ManyToOne
     @JoinColumn(name = "provider_id", referencedColumnName = "id")
+    @JsonBackReference
     private Provider provider;
 
-    @OneToMany(mappedBy = "part")
+    @OneToMany(mappedBy = "part", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     private Set<PartRecord> partRecords;
+
+    @OneToMany(mappedBy = "part", cascade = CascadeType.PERSIST)
+    private Set<SubsidiaryStock> subsidiaryStock;
+
+    @OneToMany(mappedBy = "part", cascade = CascadeType.PERSIST)
+    private Set<OrderDetail> orderDetails;
 
     public Long getId() {
         return id;
@@ -78,4 +88,7 @@ public class Part {
     public Set<PartRecord> getPartRecords() {
         return partRecords;
     }
+
+
+
 }

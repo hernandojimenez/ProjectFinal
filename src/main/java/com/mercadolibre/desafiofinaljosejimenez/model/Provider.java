@@ -23,7 +23,7 @@ public class Provider {
     @Column
     private String country;
 
-    @OneToMany(mappedBy = "provider")
+    @OneToMany(mappedBy = "provider",cascade = CascadeType.ALL)
     private Set<Part> parts;
 
     public String getName() {
