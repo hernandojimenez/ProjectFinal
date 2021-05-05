@@ -19,6 +19,8 @@ public class PartRecord {
 
     private double urgentPrice;
 
+    private String modifiedField;
+
     @ManyToOne
     @JoinColumn(name = "part_id", referencedColumnName = "id")
     private Part part;
