@@ -12,6 +12,7 @@ public class PartRecord {
     private Long id;
 
     @Column(nullable = false)
+
     private Date lastModification;
 
     @Column(nullable = false)
