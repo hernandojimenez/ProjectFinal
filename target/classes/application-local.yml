@@ -10,9 +10,18 @@ spring:
       ddl-auto: update
   datasource:
     platform: mysql
+#<<<<<<< HEAD
     url: jdbc:mysql://localhost:3306/finaldb?useSSL=false&serverTimeZone=UTC
     username: root
-    password: 12345678
+<<<<<<< HEAD
+    password: rootroot
     #url: jdbc:mysql://proxysql.master.meliseginf.com:6612/finaldb1?useSSL=true&serverTimezone=UTC&characterEncoding=UTF-8
+=======
+    password: 1234567
+#=======
+    #url: jdbc:mysql://localhost:3306/finaldb?useSSL=false&serverTimeZone=UTC&allowPublicKeyRetrieval=true
+>>>>>>> 60685d6e26655b9c505f206c963f9d9727511dc0
     #username: ${LOCAL_DB_USER}
     #password: ${LOCAL_DB_PASS}
+#>>>>>>> acf31b556f1364dbd6ee10f000e4560121d8a74e
+    #url: jdbc:mysql://proxysql.master.meliseginf.com:6612/finaldb1?useSSL=true&serverTimezone=UTC&characterEncoding=UTF-8

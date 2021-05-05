@@ -1,8 +1,0 @@
-com/mercadolibre/desafiofinaljosejimenez/unit/ScopeUtilTest.class
-com/mercadolibre/desafiofinaljosejimenez/integration/ControllerTest.class
-com/mercadolibre/desafiofinaljosejimenez/integration/PingControllerTest.class
-com/mercadolibre/desafiofinaljosejimenez/unit/beans/RandomSampleBeanTest.class
-com/mercadolibre/desafiofinaljosejimenez/integration/IntegrationTest.class
-com/mercadolibre/desafiofinaljosejimenez/integration/ControllerExceptionHandlerTest.class
-com/mercadolibre/desafiofinaljosejimenez/integration/GenerateDoc.class
-com/mercadolibre/desafiofinaljosejimenez/util/MockitoExtension.class
