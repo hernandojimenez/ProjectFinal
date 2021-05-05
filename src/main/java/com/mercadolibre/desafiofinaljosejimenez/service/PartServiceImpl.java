@@ -5,6 +5,7 @@ import com.mercadolibre.desafiofinaljosejimenez.mapper.PartMapper;
 import com.mercadolibre.desafiofinaljosejimenez.model.Part;
 import com.mercadolibre.desafiofinaljosejimenez.repositories.PartRepository;
 import com.mercadolibre.desafiofinaljosejimenez.util.DateUtils;
+import com.mercadolibre.desafiofinaljosejimenez.util.Validator;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
@@ -29,10 +30,11 @@ public class PartServiceImpl implements PartService{
     @Override
     public List<PartResponseDTO> getParts(Map<String, String> params) {
         // Validar parametros
+        Validator.validFilters(params);
 
         List<Part> dbParts = new ArrayList<>();
 
-        String queryType = params.get("querytype");
+        String queryType = params.get("queryType");
 
         if (params.isEmpty() || queryType.equals("C"))
             dbParts = repository.findAll();
