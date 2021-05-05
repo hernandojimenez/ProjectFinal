@@ -3,6 +3,9 @@
 # Overrides application.yml default properties
 
 spring:
+  jwt:
+    header: Authorization
+    secret: my-very-secret-key
   jpa:
     database: mysql
     show-sql: false
@@ -13,6 +16,3 @@ spring:
     url: jdbc:mysql://localhost:3306/finaldb?useSSL=false&serverTimeZone=UTC
     username: root
     password: 12345678
-    #url: jdbc:mysql://proxysql.master.meliseginf.com:6612/finaldb1?useSSL=true&serverTimezone=UTC&characterEncoding=UTF-8
-    #username: ${LOCAL_DB_USER}
-    #password: ${LOCAL_DB_PASS}
