@@ -17,7 +17,7 @@ public class DiscountRate {
     @Column
     private double discount;
 
-    @OneToOne(mappedBy = "discountRate")
+    @OneToOne(mappedBy = "discountRate",cascade = CascadeType.ALL)
     private PartRecord partRecord;
 
     public Long getId() {

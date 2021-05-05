@@ -1,6 +1,7 @@
 package com.mercadolibre.desafiofinaljosejimenez.model;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "part_status")
@@ -16,6 +17,9 @@ public class PartStatus {
 
     @Column(nullable = false)
     private String description;
+
+    @OneToMany(mappedBy = "partStatus", cascade = CascadeType.PERSIST)
+    private Set<OrderDetail> orderDetails;
 
     public Long getId() {
         return id;

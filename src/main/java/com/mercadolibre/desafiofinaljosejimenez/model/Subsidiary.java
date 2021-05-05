@@ -38,8 +38,8 @@ public class Subsidiary {
     @OneToMany(mappedBy = "subsidiary", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     private List<SubsidiaryStock> subsidiaryStocks;
 
-    @OneToMany(mappedBy = "subsidiary", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<UserCentral> users;
+    //@OneToMany(mappedBy = "subsidiary", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    //private List<UserCentral> users;
 
     @Override
     public boolean equals(Object o) {

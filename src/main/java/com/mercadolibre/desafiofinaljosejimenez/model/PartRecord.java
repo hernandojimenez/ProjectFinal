@@ -32,7 +32,7 @@ public class PartRecord {
     private Part part;
 
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "discountRate_id", referencedColumnName = "id")
     private DiscountRate discountRate;
 

@@ -16,12 +16,12 @@ public class SubsidiaryStock {
     private Integer quantity;
 
     @JoinColumn(name = "part_id", nullable = false)
-    @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    @ManyToOne
     @JsonBackReference
     private Part part;
 
     @JoinColumn(name = "subsidiary_id", nullable = false)
-    @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    @ManyToOne
     @JsonBackReference
     private Subsidiary subsidiary;
 
