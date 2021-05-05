@@ -1,5 +1,6 @@
 package com.mercadolibre.desafiofinaljosejimenez.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
@@ -17,6 +18,11 @@ public class UserCentral {
     @Column
     @JsonIgnore
     private String password;
+
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "subsidiary_id", nullable = false)
+    @JsonBackReference
+    private Subsidiary subsidiary;
 
     public Long getId() {
         return id;
