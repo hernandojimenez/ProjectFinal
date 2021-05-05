@@ -9,15 +9,16 @@ import java.util.Optional;
 public class PartMapper {
 
    public static PartResponseDTO mapPartToResponse(Part part){
-        if(part!=null){
+        if (part != null) {
             Optional<PartRecord> lastPart = part.getPartRecords().stream().findFirst();
-            if(lastPart.isPresent()){
+
+            if (lastPart.isPresent()) {
                 return new PartResponseDTO(part.getPartCode(),part.getDescription(),part.getProvider().getName(),part.getStockCM().getQuantity(),
                         lastPart.get().getDiscountRate().getDescription(),lastPart.get().getNormalPrice(),lastPart.get().getUrgentPrice(),
                         part.getNetWeight(),part.getLongDimension(), part.getWidthDimension(), part.getTallDimension(),lastPart.get().getLastModification());
             }
-
         }
+
         return null;
     }
 }

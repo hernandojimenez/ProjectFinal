@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.text.ParseException;
 import java.util.Map;
 
 @RestController
@@ -21,7 +22,7 @@ public class PartController {
     }
 
     @GetMapping("/list")
-    public ResponseEntity<?> getParts(@RequestParam Map<String, String> params){
+    public ResponseEntity<?> getParts(@RequestParam Map<String, String> params) throws ParseException {
         return new ResponseEntity(partService.getParts(params), HttpStatus.OK);
     }
 }
