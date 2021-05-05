@@ -8,7 +8,7 @@ import java.util.Set;
 public class Carrier {
 
     @Id
-    @Column(name = "accountType_id")
+    @Column(name = "carrier_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
