@@ -14,7 +14,7 @@ import java.util.List;
 public interface PartRepository extends JpaRepository<Part,Long> {
     @Query("select p from Part p " +
             "join PartRecord pr on p.id = pr.part.id " +
-            "where pr.lastModification >= :date " +
+            "where pr.lastModification >= :date and pr.lastModification <= current_date " +
             "and pr.lastModification <= current_date " +
             "and pr.modifiedField <> 'normal_price'" +
             "and pr.modifiedField <> 'sale_price'" +
@@ -24,7 +24,7 @@ public interface PartRepository extends JpaRepository<Part,Long> {
 
     @Query("select p from Part p " +
             "join PartRecord pr on p.id = pr.part.id " +
-            "where pr.lastModification >= :date " +
+            "where pr.lastModification >= :date and pr.lastModification <= current_date " +
             "and pr.lastModification <= current_date " +
             "and pr.modifiedField <> 'normal_price'" +
             "and pr.modifiedField <> 'sale_price'" +
@@ -34,17 +34,19 @@ public interface PartRepository extends JpaRepository<Part,Long> {
 
     @Query("select p from Part p " +
             "join PartRecord pr on p.id = pr.part.id " +
-            "where pr.lastModification >= :date " +
+            "where pr.lastModification >= :date and pr.lastModification <= current_date " +
+            "order by pr.lastModification desc")
+           /* "where pr.lastModification >= :date " +
             "and pr.lastModification <= current_date " +
             "and pr.modifiedField = 'normal_price' " +
             "or pr.modifiedField = 'sale_price' " +
             "or pr.modifiedField = 'urgent_price' " +
-            "order by pr.lastModification asc")
+            "order by pr.lastModification asc")*/
     List<Part> findByModifiedPriceAsc(@Param("date") Date date);
 
     @Query("select p from Part p " +
             "join PartRecord pr on p.id = pr.part.id " +
-            "where pr.lastModification >= :date " +
+            "where pr.lastModification >= :date and pr.lastModification <= current_date " +
             "and pr.lastModification <= current_date " +
             "and pr.modifiedField = 'normal_price' " +
             "or pr.modifiedField = 'sale_price' " +

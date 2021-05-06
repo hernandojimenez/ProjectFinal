@@ -25,32 +25,34 @@ public class OrderCM {
     @Column(nullable = false, length = 1)
     private String deliveryStatus;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne
     @JoinColumn(name = "shippingType_id", nullable = false)
     @JsonBackReference
     private ShippingType shippingType;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne
     @JoinColumn(name = "deliveryStatus_id", nullable = false)
     @JsonBackReference
     private DeliveryStatus deliveryS;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
+
+    @ManyToOne
     @JoinColumn(name = "carrier_id", nullable = false)
     @JsonBackReference
     private Carrier carrier;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne
     @JoinColumn(name = "orderStatus_id", nullable = false)
     @JsonBackReference
     private OrderStatus orderStatus;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
+
+    @ManyToOne
     @JoinColumn(name = "orderType_id", nullable = false)
     @JsonBackReference
     private OrderType orderType;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne
     @JoinColumn(name = "subsidiary_id", nullable = false)
     @JsonBackReference
     private Subsidiary subsidiary;

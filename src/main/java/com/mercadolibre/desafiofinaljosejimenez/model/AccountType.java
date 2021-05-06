@@ -1,6 +1,7 @@
 package com.mercadolibre.desafiofinaljosejimenez.model;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table (name = "account_type")
@@ -13,6 +14,9 @@ public class AccountType {
 
     @Column(nullable = false)
     private String description;
+
+    @OneToMany(mappedBy = "accountType", cascade = CascadeType.PERSIST)
+    private Set<OrderDetail> orderDetails;
 
     public AccountType() {
 

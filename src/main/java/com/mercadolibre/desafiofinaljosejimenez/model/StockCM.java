@@ -13,7 +13,7 @@ public class StockCM {
     @Column(nullable = false)
     private int quantity;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "part_id", referencedColumnName = "id")
     private Part part;
 

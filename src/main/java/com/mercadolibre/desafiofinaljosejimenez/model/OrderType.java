@@ -1,6 +1,7 @@
 package com.mercadolibre.desafiofinaljosejimenez.model;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "order_type")
@@ -17,6 +18,8 @@ public class OrderType {
     @Column(nullable = false)
     private String description;
 
+    @OneToMany(mappedBy = "orderType", cascade = CascadeType.PERSIST)
+    private Set<OrderCM> orderCM;
 
     public Long getId() {
         return id;
