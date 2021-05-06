@@ -42,4 +42,49 @@ public class Validator {
         return availableDate.matches(regex);
     }
 
+    public static boolean validFiltersOrders(Map<String, String> filters) {
+        if (filters.size() ==0) return true;
+
+        for (Map.Entry<String, String> entry : filters.entrySet()) {
+            if(! (entry.getKey().equals("dealerNumber")|| entry.getKey().equals("deliveryStatus")|| entry.getKey().equals("order") ) ) throw new InvalidFilterInformation("You´ve entered invalid Filters");
+        }
+        return validFilterLogicOrders(filters.getOrDefault("dealerNumber",""),filters.getOrDefault("deliveryStatus",""),filters.getOrDefault("order",""));
+    }
+
+    private static boolean validFilterLogicOrders(String dealerNumber, String deliveryStatus, String order) {
+
+        //if dealer number is empty
+        if (dealerNumber.equals("")) throw new InvalidFilterInformation("You did not enter any dealer number");
+
+        // if dealer number is not 4 digits long
+        if (dealerNumber.length() != 4 ) throw new InvalidFilterInformation("Dealer number must have 4 digits");
+
+        // if dealer number is not 4 digits long
+        if (isNumeric(dealerNumber)) throw new InvalidFilterInformation("Dealer number must have all numeric characters");
+
+        //Valid type of delivery Status
+        if (!((deliveryStatus.equals("P") || deliveryStatus.equals("D")) || deliveryStatus.equals("F") || deliveryStatus.equals("C")|| deliveryStatus.equals("")))throw new InvalidFilterInformation("Invalid Type of delivery status");
+
+        //If order is not in query
+        if (order.equals("")) return true;
+
+        //If valid order
+        if (!(order.equals("1") || order.equals("2"))) throw new InvalidFilterInformation("Invalid order number");
+
+        return true;
+    }
+
+    public static boolean isNumeric(String strNum) {
+        if (strNum == null) {
+            return false;
+        }
+        try {
+            double d = Double.parseDouble(strNum);
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
+        return true;
+    }
+
+
 }
