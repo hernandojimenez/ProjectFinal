@@ -27,6 +27,8 @@ public class OrderServiceImpl implements OrderService{
         //    return result;
         //}
 
-        throw new NotFoundException("404 Not Found");
+        return null;
+
+        //throw new NotFoundException("404 Not Found");
     }
 }
