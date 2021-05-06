@@ -29,12 +29,12 @@ public class SorterUtils {
     }
 
     public static PartSorter getPSorterByOrder(String order, PartRepository repository) throws Exception {
-        if (order.equals("1")) return new ModifiedAttributeAscSorterImpl(repository);
-        return new ModifiedAttributeDescSorterImpl(repository);
+        if (order.equals("2")) return new ModifiedAttributeDescSorterImpl(repository);
+        return new ModifiedAttributeAscSorterImpl(repository);
 }
 
     public static PartSorter getVSorterByOrder(String order, PartRepository repository) throws Exception {
-        if (order.equals("1")) return new ModifiedPriceAscSorterImpl(repository);
-        return new ModifiedPriceDescSorterImpl(repository);
+        if (order.equals("2")) return new ModifiedPriceDescSorterImpl(repository);
+        return new ModifiedPriceAscSorterImpl(repository);
     }
 }

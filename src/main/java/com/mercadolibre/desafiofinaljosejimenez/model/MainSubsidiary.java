@@ -32,8 +32,8 @@ public class MainSubsidiary {
     @OneToMany(mappedBy = "main_subsidiary", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     private List<StockCM> stockCM;
 
-    //@OneToMany(mappedBy = "subsidiary", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    //private List<UserCentral> users;
+    @OneToMany(mappedBy = "main_subsidiary", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<UserCentral> users;
 
 
     @Override
