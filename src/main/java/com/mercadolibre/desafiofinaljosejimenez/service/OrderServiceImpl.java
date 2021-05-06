@@ -26,7 +26,7 @@ public class OrderServiceImpl implements OrderService{
         //if(!result.isEmpty()){
         //    return result;
         //}
-
-        throw new NotFoundException("404 Not Found");
+        return null;
+        //throw new NotFoundException("404 Not Found");
     }
 }
