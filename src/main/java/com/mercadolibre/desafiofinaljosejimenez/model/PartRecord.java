@@ -11,14 +11,20 @@ public class PartRecord {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false)
+
     private Date lastModification;
 
+    @Column(nullable = false)
     private double normalPrice;
 
+    @Column(nullable = false)
     private double salePrice;
 
+    @Column(nullable = false)
     private double urgentPrice;
 
+    @Column(nullable = false)
     private String modifiedField;
 
     @ManyToOne
@@ -26,7 +32,7 @@ public class PartRecord {
     private Part part;
 
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "discountRate_id", referencedColumnName = "id")
     private DiscountRate discountRate;
 

@@ -3,7 +3,7 @@ package com.mercadolibre.desafiofinaljosejimenez.util;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
+import java.time.DateTimeException;
 import java.util.Date;
 
 public class DateUtils {
@@ -13,7 +13,6 @@ public class DateUtils {
     {
         DateFormat sdf = new SimpleDateFormat(DATE_FORMAT);
         sdf.setLenient(false);
-
         try
         {
             return sdf.parse(date);
