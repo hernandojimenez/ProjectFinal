@@ -1,6 +1,7 @@
 package com.mercadolibre.desafiofinaljosejimenez.service;
 
 import com.mercadolibre.desafiofinaljosejimenez.dtos.response.PartResponseDTO;
+import com.mercadolibre.desafiofinaljosejimenez.exceptions.NotFoundException;
 import com.mercadolibre.desafiofinaljosejimenez.mapper.PartMapper;
 import com.mercadolibre.desafiofinaljosejimenez.model.Part;
 import com.mercadolibre.desafiofinaljosejimenez.model.PartRecord;
@@ -46,8 +47,10 @@ public class PartServiceImpl implements PartService {
 
         List<Part> dbParts = PartSorterUtils.getSorter(params, repository,daySelected);
 
-        List<PartResponseDTO> result = dbParts.stream().map(part -> { return PartMapper.mapPartToResponse(part); }).collect(Collectors.toList());
-
-        return result;
+        if(!dbParts.isEmpty()){
+            List<PartResponseDTO> result = dbParts.stream().map(part -> { return PartMapper.mapPartToResponse(part); }).collect(Collectors.toList());
+            return result;
+        }
+        throw new NotFoundException("404 Not Found");
     }
 }

@@ -2,6 +2,7 @@ package com.mercadolibre.desafiofinaljosejimenez.service;
 
 import com.mercadolibre.desafiofinaljosejimenez.dtos.response.OrderDEResponse;
 import com.mercadolibre.desafiofinaljosejimenez.dtos.response.PartResponseDTO;
+import com.mercadolibre.desafiofinaljosejimenez.exceptions.NotFoundException;
 import com.mercadolibre.desafiofinaljosejimenez.mapper.PartMapper;
 import com.mercadolibre.desafiofinaljosejimenez.model.OrderDE;
 import com.mercadolibre.desafiofinaljosejimenez.model.Part;
@@ -22,8 +23,10 @@ public class OrderServiceImpl implements OrderService{
 
         //List<OrderDEResponse> result = dbParts.stream().map(part -> { return PartMapper.mapPartToResponse(part); }).collect(Collectors.toList());
 
-        //return result;
+        //if(!result.isEmpty()){
+        //    return result;
+        //}
 
-        return null;
+        throw new NotFoundException("404 Not Found");
     }
 }
