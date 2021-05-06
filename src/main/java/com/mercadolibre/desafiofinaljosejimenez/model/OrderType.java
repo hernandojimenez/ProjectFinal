@@ -21,6 +21,9 @@ public class OrderType {
     @OneToMany(mappedBy = "orderType", cascade = CascadeType.PERSIST)
     private Set<OrderCM> orderCM;
 
+    @OneToMany(mappedBy = "orderType", cascade = CascadeType.PERSIST)
+    private Set<OrderDE> orderDE;
+
     public Long getId() {
         return id;
     }

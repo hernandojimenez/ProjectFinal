@@ -41,6 +41,9 @@ public class Subsidiary {
     //@OneToMany(mappedBy = "subsidiary", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     //private List<UserCentral> users;
 
+    @OneToMany(mappedBy = "subsidiary", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    private Set<Dealer> dealers;
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -54,8 +54,6 @@ Zsrc/main/java/com/mercadolibre/desafiofinaljosejimenez/service/FindAllPartsSort
 Ysrc/main/java/com/mercadolibre/desafiofinaljosejimenez/dtos/response/PartResponseDTO.java,7/2/72a91ae9fe764c2d52d91aa209deddf132cfaf5c
 
 Osrc/main/java/com/mercadolibre/desafiofinaljosejimenez/service/PartService.java,a/7/a7db20cbfa24c48be0c62f24a707651e7303f1e9
-‡
-Wsrc/main/java/com/mercadolibre/desafiofinaljosejimenez/repositories/PartRepository.java,e/1/e18bb20ab7691487d60f471b30083691653771e0
 |
 Lsrc/main/java/com/mercadolibre/desafiofinaljosejimenez/model/Subsidiary.java,7/e/7ec384cf2b4658828deab750afaf3bd1eee43cf8
 v

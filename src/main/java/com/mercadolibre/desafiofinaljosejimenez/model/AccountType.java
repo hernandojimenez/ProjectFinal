@@ -18,6 +18,9 @@ public class AccountType {
     @OneToMany(mappedBy = "accountType", cascade = CascadeType.PERSIST)
     private Set<OrderDetail> orderDetails;
 
+    @OneToMany(mappedBy = "accountType", cascade = CascadeType.PERSIST)
+    private Set<OrderDetailDE> orderDetailsDE;
+
     public AccountType() {
 
     }

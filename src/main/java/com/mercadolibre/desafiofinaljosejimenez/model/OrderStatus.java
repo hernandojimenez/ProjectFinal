@@ -23,6 +23,9 @@ public class OrderStatus {
     @OneToMany(mappedBy = "orderStatus", cascade = CascadeType.PERSIST)
     private Set<OrderCM> orderCM;
 
+    @OneToMany(mappedBy = "orderStatus", cascade = CascadeType.PERSIST)
+    private Set<OrderDE> orderDE;
+
     public Long getId() {
         return id;
     }

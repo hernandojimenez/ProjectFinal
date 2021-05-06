@@ -35,7 +35,6 @@ public class OrderCM {
     @JsonBackReference
     private DeliveryStatus deliveryS;
 
-
     @ManyToOne
     @JoinColumn(name = "carrier_id", nullable = false)
     @JsonBackReference
@@ -45,7 +44,6 @@ public class OrderCM {
     @JoinColumn(name = "orderStatus_id", nullable = false)
     @JsonBackReference
     private OrderStatus orderStatus;
-
 
     @ManyToOne
     @JoinColumn(name = "orderType_id", nullable = false)
