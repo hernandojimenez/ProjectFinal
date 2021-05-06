@@ -5,10 +5,12 @@ import com.mercadolibre.desafiofinaljosejimenez.dtos.response.PartResponseDTO;
 import com.mercadolibre.desafiofinaljosejimenez.mapper.PartMapper;
 import com.mercadolibre.desafiofinaljosejimenez.model.OrderDE;
 import com.mercadolibre.desafiofinaljosejimenez.model.Part;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
 
+@Service
 public class OrderServiceImpl implements OrderService{
     @Override
     public List<OrderDEResponse> getOrders(Map<String, String> params) throws Exception {
