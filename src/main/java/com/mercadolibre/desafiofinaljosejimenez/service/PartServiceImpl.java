@@ -7,7 +7,7 @@ import com.mercadolibre.desafiofinaljosejimenez.model.PartRecord;
 import com.mercadolibre.desafiofinaljosejimenez.repositories.PartRepository;
 import com.mercadolibre.desafiofinaljosejimenez.util.DateUtils;
 
-import com.mercadolibre.desafiofinaljosejimenez.util.SorterUtils;
+import com.mercadolibre.desafiofinaljosejimenez.util.PartSorterUtils;
 import com.mercadolibre.desafiofinaljosejimenez.util.Validator;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -44,9 +44,7 @@ public class PartServiceImpl implements PartService {
 
         Date daySelected = DateUtils.getDateFromString(date);
 
-        PartSorter sorter = SorterUtils.getSorter(params, repository);
-
-        List<Part> dbParts = sorter.findParts(daySelected);
+        List<Part> dbParts = PartSorterUtils.getSorter(params, repository,daySelected);
 
         List<PartResponseDTO> result = dbParts.stream().map(part -> { return PartMapper.mapPartToResponse(part); }).collect(Collectors.toList());
 
