@@ -3,6 +3,9 @@
 # Overrides application.yml default properties
 
 spring:
+  jwt:
+    header: Authorization
+    secret: my-very-secret-key
   jpa:
     database: mysql
     show-sql: false
@@ -10,6 +13,6 @@ spring:
       ddl-auto: update
   datasource:
     platform: mysql
-    url: jdbc:mysql://localhost:3306/finaldb?useSSL=false&serverTimeZone=UTC&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://localhost:3306/finaldb?useSSL=false&serverTimeZone=UTC
     username: ${LOCAL_DB_USER}
     password: ${LOCAL_DB_PASS}

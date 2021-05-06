@@ -18,6 +18,9 @@ public class Subsidiary {
     private Long id;
 
     @Column(nullable = false)
+    private String subsidiaryNumber;
+
+    @Column(nullable = false)
     private String name;
 
     @Column(nullable = false)
@@ -38,8 +41,11 @@ public class Subsidiary {
     @OneToMany(mappedBy = "subsidiary", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     private List<SubsidiaryStock> subsidiaryStocks;
 
-    //@OneToMany(mappedBy = "subsidiary", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    //private List<UserCentral> users;
+    @OneToMany(mappedBy = "subsidiary", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<UserCentral> users;
+
+    @OneToMany(mappedBy = "subsidiary", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    private Set<Dealer> dealers;
 
     @Override
     public boolean equals(Object o) {

@@ -7,7 +7,7 @@ import java.time.DateTimeException;
 import java.util.Date;
 
 public class DateUtils {
-    public static String DATE_FORMAT = "dd/MM/yyyy";
+    public static String DATE_FORMAT = "yyyy-MM-dd";
 
     public static Date getDateFromString(String date)
     {

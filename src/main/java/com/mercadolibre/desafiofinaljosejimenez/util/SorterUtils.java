@@ -7,36 +7,34 @@ import com.mercadolibre.desafiofinaljosejimenez.service.*;
 import java.util.Map;
 
 public class SorterUtils {
+
     public static PartSorter getSorter(Map<String, String> params, PartRepository repository) throws Exception {
-        String queryType = params.get("querytype");
+        if (params.size()== 0) return new FindAllPartsSorterImpl(repository);
 
-        if (params.isEmpty() || queryType.equals("C"))
-            return new FindAllPartsSorterImpl(repository);
-        else if (queryType.equals("P")) {
-            if (params.containsKey("order")) {
-                if (params.get("order").equals("1"))
-                    return new ModifiedAttributeAscSorterImpl(repository);
-                else if (params.get("order").equals("2"))
-                    return new ModifiedAttributeDescSorterImpl(repository);
-                else
-                    throw new Exception("Invalid order");
-            }
-            else
-                return new ModifiedAttributeAscSorterImpl(repository);
-        }
-        else if (queryType.equals("V")) {
-            if (params.containsKey("order")) {
-                if (params.containsKey("order") && params.get("order").equals("1"))
-                    return new ModifiedPriceAscSorterImpl(repository);
-                else if (params.get("order").equals("2"))
-                    return new ModifiedPriceDescSorterImpl(repository);
-                else
-                    throw new Exception("Invalid order");
-            }
-            else
-                throw new Exception("Invalid order");
-        }
+        String queryType = params.get("queryType");
+        String order = params.getOrDefault("order","1");
 
-        throw new Exception();
+        switch (queryType) {
+
+            case "C":
+                return new FindAllPartsSorterImpl(repository);
+
+            case "P":
+                return getPSorterByOrder(order, repository);
+
+            case "V":
+                return getVSorterByOrder(order, repository);
+        }
+        return null;
+    }
+
+    public static PartSorter getPSorterByOrder(String order, PartRepository repository) throws Exception {
+        if (order.equals("2")) return new ModifiedAttributeDescSorterImpl(repository);
+        return new ModifiedAttributeAscSorterImpl(repository);
+}
+
+    public static PartSorter getVSorterByOrder(String order, PartRepository repository) throws Exception {
+        if (order.equals("2")) return new ModifiedPriceDescSorterImpl(repository);
+        return new ModifiedPriceAscSorterImpl(repository);
     }
 }

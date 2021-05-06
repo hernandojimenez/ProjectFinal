@@ -1,5 +1,8 @@
 package com.mercadolibre.desafiofinaljosejimenez.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import org.jboss.jandex.Main;
+
 import javax.persistence.*;
 
 @Entity
@@ -16,6 +19,12 @@ public class StockCM {
     @OneToOne
     @JoinColumn(name = "part_id", referencedColumnName = "id")
     private Part part;
+
+
+    @ManyToOne
+    @JoinColumn(name = "main_subsidiary_id", nullable = false)
+    @JsonBackReference
+    private MainSubsidiary main_subsidiary;
 
     public int getQuantity() {
         return quantity;

@@ -2,6 +2,7 @@ package com.mercadolibre.desafiofinaljosejimenez.model;
 
 import javax.persistence.*;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "discount_rates")
@@ -17,8 +18,8 @@ public class DiscountRate {
     @Column
     private double discount;
 
-    @OneToOne(mappedBy = "discountRate",cascade = CascadeType.ALL)
-    private PartRecord partRecord;
+    @OneToMany(mappedBy = "discountRate",cascade = CascadeType.ALL)
+    private Set<PartRecord> partRecords;
 
     public Long getId() {
         return id;
@@ -32,8 +33,8 @@ public class DiscountRate {
         return discount;
     }
 
-    public PartRecord getPartRecord() {
-        return partRecord;
+    public Set<PartRecord> getPartRecords() {
+        return partRecords;
     }
 
     @Override

@@ -25,6 +25,4 @@ public class PartController {
     public ResponseEntity<?> getParts(@RequestParam Map<String, String> params) throws Exception {
         return new ResponseEntity(partService.getParts(params), HttpStatus.OK);
     }
-
-
 }
