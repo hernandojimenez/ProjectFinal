@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name = "order_DE")
@@ -40,7 +39,6 @@ public class OrderDE {
     @JsonBackReference
     private OrderStatus orderStatus;
 
-
     @ManyToOne
     @JoinColumn(name = "orderType_id", nullable = false)
     @JsonBackReference
@@ -51,8 +49,6 @@ public class OrderDE {
     @JsonBackReference
     private Dealer dealer;
 
-
     @OneToMany(mappedBy = "order_de", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     private List<OrderDetailDE> orderDetailDE;
-
 }
