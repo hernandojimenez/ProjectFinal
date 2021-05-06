@@ -3,6 +3,8 @@
 # Overrides application.yml default properties
 
 spring:
+  jwt:
+    secret: 'my-secret-key'
   jpa:
     database: mysql
     show-sql: false
