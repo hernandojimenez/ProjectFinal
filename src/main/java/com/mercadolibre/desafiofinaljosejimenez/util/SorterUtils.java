@@ -1,6 +1,5 @@
 package com.mercadolibre.desafiofinaljosejimenez.util;
 
-import com.mercadolibre.desafiofinaljosejimenez.model.Part;
 import com.mercadolibre.desafiofinaljosejimenez.repositories.PartRepository;
 import com.mercadolibre.desafiofinaljosejimenez.service.*;
 
@@ -37,4 +36,5 @@ public class SorterUtils {
         if (order.equals("2")) return new ModifiedPriceDescSorterImpl(repository);
         return new ModifiedPriceAscSorterImpl(repository);
     }
+
 }
