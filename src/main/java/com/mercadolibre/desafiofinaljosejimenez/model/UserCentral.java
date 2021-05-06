@@ -20,9 +20,14 @@ public class UserCentral {
     private String password;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "subsidiary_id", nullable = false)
+    @JoinColumn(name = "subsidiary_id", nullable = true)
     @JsonBackReference
     private Subsidiary subsidiary;
+
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "main_subsidiary_id", nullable = true)
+    @JsonBackReference
+    private MainSubsidiary main_subsidiary;
 
     public Long getId() {
         return id;
