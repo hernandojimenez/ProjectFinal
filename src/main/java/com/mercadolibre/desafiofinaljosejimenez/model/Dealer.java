@@ -14,6 +14,9 @@ public class Dealer {
     private Long id;
 
     @Column(nullable = false)
+    private String dealerNumber;
+
+    @Column(nullable = false)
     private String name;
 
     @Column(nullable = false)

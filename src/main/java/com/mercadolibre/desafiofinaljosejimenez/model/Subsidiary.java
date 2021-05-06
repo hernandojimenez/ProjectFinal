@@ -18,6 +18,9 @@ public class Subsidiary {
     private Long id;
 
     @Column(nullable = false)
+    private String subsidiaryNumber;
+
+    @Column(nullable = false)
     private String name;
 
     @Column(nullable = false)
