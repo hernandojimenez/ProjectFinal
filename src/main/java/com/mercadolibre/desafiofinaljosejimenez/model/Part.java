@@ -32,7 +32,7 @@ public class Part {
     @Column(nullable = false)
     private int netWeight;
 
-    @OneToOne(mappedBy = "part")
+    @OneToOne(mappedBy = "part",cascade = CascadeType.ALL)
     private StockCM stockCM;
 
     @ManyToOne
@@ -42,6 +42,12 @@ public class Part {
 
     @OneToMany(mappedBy = "part", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     private Set<PartRecord> partRecords;
+
+    @OneToMany(mappedBy = "part", cascade = CascadeType.PERSIST)
+    private Set<SubsidiaryStock> subsidiaryStock;
+
+    @OneToMany(mappedBy = "part", cascade = CascadeType.PERSIST)
+    private Set<OrderDetail> orderDetails;
 
     public Long getId() {
         return id;

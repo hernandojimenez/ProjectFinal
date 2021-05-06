@@ -11,22 +11,22 @@ public class OrderDetail {
     @Column(name = "order_detail_id")
     private Long id;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "order_id", nullable = false)
     @JsonBackReference
     private OrderCM order;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne
     @JoinColumn(name = "part_id", nullable = false)
     @JsonBackReference
     private Part part;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "account_type_id", nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "accountType_id", nullable = false)
     @JsonBackReference
     private AccountType accountType;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne
     @JoinColumn(name = "partStatus_id", nullable = false)
     @JsonBackReference
     private PartStatus partStatus;
