@@ -27,8 +27,12 @@ public class Carrier {
     @OneToMany(mappedBy = "carrier", cascade = CascadeType.PERSIST)
     private Set<OrderCM> orderCM;
 
+<<<<<<< HEAD
+    public Carrier() {}
+=======
     @OneToMany(mappedBy = "carrier", cascade = CascadeType.PERSIST)
     private Set<OrderDE> orderDE;
+>>>>>>> 63c041ddb43f4534a4fc045cecf077423769dedd
 
     public Long getId() {
         return id;
