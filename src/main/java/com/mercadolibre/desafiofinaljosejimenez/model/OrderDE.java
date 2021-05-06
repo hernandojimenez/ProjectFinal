@@ -21,13 +21,21 @@ public class OrderDE {
     @Column(nullable = false)
     private Date deliveryDate;
 
-    @Column(nullable = false, length = 1)
-    private String deliveryStatus;
+    //@Column(nullable = false, length = 1)
+    //private String deliveryStatus;
 
     @ManyToOne
     @JoinColumn(name = "deliveryStatus_id", nullable = false)
     @JsonBackReference
     private DeliveryStatus deliveryS;
+
+    public DeliveryStatus getDeliveryS() {
+        return deliveryS;
+    }
+
+    public void setDeliveryS(DeliveryStatus deliveryS) {
+        this.deliveryS = deliveryS;
+    }
 
     @ManyToOne
     @JoinColumn(name = "carrier_id", nullable = false)
