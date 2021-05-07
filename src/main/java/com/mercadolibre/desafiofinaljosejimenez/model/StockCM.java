@@ -1,7 +1,6 @@
 package com.mercadolibre.desafiofinaljosejimenez.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import org.jboss.jandex.Main;
 
 import javax.persistence.*;
 

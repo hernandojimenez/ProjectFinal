@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name = "order_DE")
@@ -22,13 +21,21 @@ public class OrderDE {
     @Column(nullable = false)
     private Date deliveryDate;
 
-    @Column(nullable = false, length = 1)
-    private String deliveryStatus;
+    //@Column(nullable = false, length = 1)
+    //private String deliveryStatus;
 
     @ManyToOne
     @JoinColumn(name = "deliveryStatus_id", nullable = false)
     @JsonBackReference
     private DeliveryStatus deliveryS;
+
+    public DeliveryStatus getDeliveryS() {
+        return deliveryS;
+    }
+
+    public void setDeliveryS(DeliveryStatus deliveryS) {
+        this.deliveryS = deliveryS;
+    }
 
     @ManyToOne
     @JoinColumn(name = "carrier_id", nullable = false)
@@ -40,7 +47,6 @@ public class OrderDE {
     @JsonBackReference
     private OrderStatus orderStatus;
 
-
     @ManyToOne
     @JoinColumn(name = "orderType_id", nullable = false)
     @JsonBackReference
@@ -51,8 +57,6 @@ public class OrderDE {
     @JsonBackReference
     private Dealer dealer;
 
-
     @OneToMany(mappedBy = "order_de", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     private List<OrderDetailDE> orderDetailDE;
-
 }
