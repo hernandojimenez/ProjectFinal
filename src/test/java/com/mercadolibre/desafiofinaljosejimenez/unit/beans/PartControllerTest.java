@@ -1,6 +1,8 @@
 package com.mercadolibre.desafiofinaljosejimenez.unit.beans;
 
 import com.mercadolibre.desafiofinaljosejimenez.controller.PartController;
+import com.mercadolibre.desafiofinaljosejimenez.security.JwtTokenUtil;
+import com.mercadolibre.desafiofinaljosejimenez.service.JwtUserDetailsService;
 import com.mercadolibre.desafiofinaljosejimenez.service.PartService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -18,11 +20,15 @@ public class PartControllerTest {
     @MockBean
     private PartService partService;
 
+    private JwtTokenUtil jwtTokenUtil;
+
+    private JwtUserDetailsService jwtUserDetailsService;
+
     private PartController partController;
 
     @BeforeEach
     void setUp() {
-        partController = new PartController(partService);
+        partController = new PartController(partService,jwtTokenUtil,jwtUserDetailsService);
     }
 
     @Test

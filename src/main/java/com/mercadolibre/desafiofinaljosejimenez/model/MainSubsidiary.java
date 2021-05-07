@@ -35,6 +35,9 @@ public class MainSubsidiary {
     @OneToMany(mappedBy = "main_subsidiary", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<UserCentral> users;
 
+    public MainSubsidiary(Long idCentral) {
+    }
+
 
     @Override
     public int hashCode() {

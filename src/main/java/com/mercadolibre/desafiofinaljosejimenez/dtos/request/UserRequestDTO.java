@@ -1,13 +1,27 @@
 package com.mercadolibre.desafiofinaljosejimenez.dtos.request;
 
-import java.io.Serializable;
+public class UserRequestDTO {
 
-public class UserRequestDTO implements Serializable {
-
-    private static final long serialVersionUID = 5926468583005150707L;
-
+    private Long central;
+    private Long central2;
     private String username;
     private String password;
+
+    public Long getCentral() {
+        return central;
+    }
+
+    public void setCentral(Long central) {
+        this.central = central;
+    }
+
+    public Long getCentral2() {
+        return central2;
+    }
+
+    public void setCentral2(Long central2) {
+        this.central2 = central2;
+    }
 
     public String getUsername() {
         return username;
@@ -24,5 +38,4 @@ public class UserRequestDTO implements Serializable {
     public void setPassword(String password) {
         this.password = password;
     }
-
 }
