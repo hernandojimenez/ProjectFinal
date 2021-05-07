@@ -1,6 +1,7 @@
 package com.mercadolibre.desafiofinaljosejimenez.service;
 
 import com.mercadolibre.desafiofinaljosejimenez.dtos.response.OrderDEResponseDTO;
+import com.mercadolibre.desafiofinaljosejimenez.dtos.response.OrderResponseDTO;
 import com.mercadolibre.desafiofinaljosejimenez.mapper.OrderMapper;
 import com.mercadolibre.desafiofinaljosejimenez.model.OrderDE;
 import com.mercadolibre.desafiofinaljosejimenez.repositories.OrderRepository;
@@ -26,14 +27,15 @@ public class OrderServiceImpl implements OrderService{
 
 
     @Override
-    public List<OrderDEResponseDTO> getOrders(Map<String, String> params) throws Exception {
+    public OrderDEResponseDTO getOrders(Map<String, String> params) throws Exception {
 
         Validator.validFiltersOrders(params);
 
         List<OrderDE> dbOrders  = OrderSorterUtils.getSortedList(params, repository);
 
-        //List<OrderResponseDTO> result = dbOrders.stream().map(order -> { return OrderMapper.mapOrderToResponse(order); }).collect(Collectors.toList());
-        return null;
-        //return result;
+        List<OrderResponseDTO> result = dbOrders.stream().map(order -> { return OrderMapper.mapOrderToResponse(order); }).collect(Collectors.toList());
+
+        return new OrderDEResponseDTO(params.get("dealerNumber"),result);
+
     }
 }

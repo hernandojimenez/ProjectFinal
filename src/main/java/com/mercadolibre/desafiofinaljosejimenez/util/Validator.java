@@ -60,7 +60,7 @@ public class Validator {
         if (dealerNumber.length() != 4 ) throw new InvalidFilterInformation("Dealer number must have 4 digits");
 
         // if dealer number is not 4 digits long
-        if (isNumeric(dealerNumber)) throw new InvalidFilterInformation("Dealer number must have all numeric characters");
+        if (! isNumeric(dealerNumber)) throw new InvalidFilterInformation("Dealer number must have all numeric characters");
 
         //Valid type of delivery Status
         if (!((deliveryStatus.equals("P") || deliveryStatus.equals("D")) || deliveryStatus.equals("F") || deliveryStatus.equals("C")|| deliveryStatus.equals("")))throw new InvalidFilterInformation("Invalid Type of delivery status");
@@ -79,7 +79,7 @@ public class Validator {
             return false;
         }
         try {
-            double d = Double.parseDouble(strNum);
+            double d = Integer.parseInt(strNum);
         } catch (NumberFormatException nfe) {
             return false;
         }
