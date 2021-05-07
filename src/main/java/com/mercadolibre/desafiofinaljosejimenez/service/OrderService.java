@@ -7,5 +7,5 @@ import java.util.Map;
 
 public interface OrderService {
 
-    List<OrderDEResponseDTO> getOrders(Map<String, String> params) throws Exception;
+  OrderDEResponseDTO getOrders(Map<String, String> params) throws Exception;
 }

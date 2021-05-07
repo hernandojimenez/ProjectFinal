@@ -1,5 +1,7 @@
 package com.mercadolibre.desafiofinaljosejimenez.controller;
 
+import com.mercadolibre.desafiofinaljosejimenez.dtos.response.OrderDEResponseDTO;
+import com.mercadolibre.desafiofinaljosejimenez.dtos.response.OrderResponseDTO;
 import com.mercadolibre.desafiofinaljosejimenez.service.OrderService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,7 +23,8 @@ public class OrderController {
     }
 
     @GetMapping("/orders")
-    public ResponseEntity<?> getParts(@RequestParam Map<String, String> params) throws Exception {
-        return new ResponseEntity(orderService.getOrders(params), HttpStatus.OK);
+    public ResponseEntity<OrderDEResponseDTO> getParts(@RequestParam Map<String, String> params) throws Exception {
+        OrderDEResponseDTO ode = orderService.getOrders(params);
+        return new ResponseEntity(ode, HttpStatus.OK);
     }
 }
