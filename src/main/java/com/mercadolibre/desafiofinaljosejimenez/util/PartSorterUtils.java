@@ -2,7 +2,6 @@ package com.mercadolibre.desafiofinaljosejimenez.util;
 
 import com.mercadolibre.desafiofinaljosejimenez.model.Part;
 import com.mercadolibre.desafiofinaljosejimenez.repositories.PartRepository;
-import com.mercadolibre.desafiofinaljosejimenez.service.*;
 
 import java.util.Date;
 import java.util.List;
@@ -11,7 +10,7 @@ import java.util.Map;
 public class PartSorterUtils {
     //Sorting orders First Requirement
     public static List<Part> getSorter(Map<String, String> params, PartRepository repository, Date date) throws Exception {
-        if (params.size() == 0) return repository.findByModifiedAttributeDesc(date);
+        if (params.size() == 0) return repository.findAll();
 
         String queryType = params.get("queryType");
         String order = params.getOrDefault("order","1");

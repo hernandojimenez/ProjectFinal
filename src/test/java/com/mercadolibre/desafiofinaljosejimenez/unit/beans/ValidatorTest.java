@@ -132,12 +132,15 @@ public class ValidatorTest {
 
     @Test
     @DisplayName("Validates query with no filters applied")
-    public void validateOrderNoFilters() {
+    public void validateOrderNoFiltersException() {
         Map<String, String> params = new HashMap<>();
 
-        boolean response = Validator.validFiltersOrders(params);
-
-        Assertions.assertTrue(response);
+        try {
+            boolean response = Validator.validFiltersOrders(params);
+        }
+        catch (InvalidFilterInformation e) {
+            Assertions.assertTrue(e.getMessage().contains("You did not enter any filter"));
+        }
     }
 
     @Test

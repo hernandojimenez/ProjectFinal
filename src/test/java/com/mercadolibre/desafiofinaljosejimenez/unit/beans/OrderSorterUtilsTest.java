@@ -2,7 +2,7 @@ package com.mercadolibre.desafiofinaljosejimenez.unit.beans;
 
 import com.mercadolibre.desafiofinaljosejimenez.dtos.response.PartResponseDTO;
 import com.mercadolibre.desafiofinaljosejimenez.model.Part;
-import com.mercadolibre.desafiofinaljosejimenez.repositories.PartRepository;
+import com.mercadolibre.desafiofinaljosejimenez.repositories.OrderRepository;
 import com.mercadolibre.desafiofinaljosejimenez.util.GeneralTestUtils;
 import com.mercadolibre.desafiofinaljosejimenez.util.PartSorterUtils;
 import org.junit.jupiter.api.Assertions;
@@ -20,24 +20,24 @@ import java.util.Map;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
-public class PartSorterUtilsTest {
+public class OrderSorterUtilsTest {
     @Mock
-    private PartRepository partRepository;
+    private OrderRepository orderRepository;
 
     @BeforeEach
     void setUp() {
         MockitoAnnotations.initMocks(this);
     }
 
-    @Test
+    /*@Test
     @DisplayName("Gets all the parts with no filters applied")
     public void getAllParts() throws Exception {
         List<Part> partsDB = GeneralTestUtils.getPartsDB();
         List<PartResponseDTO> parts = GeneralTestUtils.getParts();
 
-        when(partRepository.findAll()).thenReturn(partsDB);
+        when(orderRepository.findAll()).thenReturn(partsDB);
 
-        List<Part> responseParts = PartSorterUtils.getSorter(new HashMap<>(), partRepository, new Date());
+        List<Part> responseParts = PartSorterUtils.getSorter(new HashMap<>(), orderRepository, new Date());
 
         Assertions.assertEquals(parts.size(), responseParts.size());
     }
@@ -52,9 +52,9 @@ public class PartSorterUtilsTest {
 
         params.put("queryType", "C");
 
-        when(partRepository.findAll()).thenReturn(partsDB);
+        when(orderRepository.findAll()).thenReturn(partsDB);
 
-        List<Part> responseParts = PartSorterUtils.getSorter(params, partRepository, new Date());
+        List<Part> responseParts = PartSorterUtils.getSorter(params, orderRepository, new Date());
 
         Assertions.assertEquals(parts.size(), responseParts.size());
     }
@@ -70,9 +70,9 @@ public class PartSorterUtilsTest {
         params.put("queryType", "P");
         params.put("order", "1");
 
-        when(partRepository.findByModifiedAttributeAsc(any())).thenReturn(partsDB);
+        when(orderRepository.findByModifiedAttributeAsc(any())).thenReturn(partsDB);
 
-        List<Part> responseParts = PartSorterUtils.getSorter(params, partRepository, new Date());
+        List<Part> responseParts = PartSorterUtils.getSorter(params, orderRepository, new Date());
 
         Assertions.assertEquals(parts.size(), responseParts.size());
     }
@@ -88,9 +88,9 @@ public class PartSorterUtilsTest {
         params.put("queryType", "P");
         params.put("order", "2");
 
-        when(partRepository.findByModifiedAttributeDesc(any())).thenReturn(partsDB);
+        when(orderRepository.findByModifiedAttributeDesc(any())).thenReturn(partsDB);
 
-        List<Part> responseParts = PartSorterUtils.getSorter(params, partRepository, new Date());
+        List<Part> responseParts = PartSorterUtils.getSorter(params, orderRepository, new Date());
 
         Assertions.assertEquals(parts.size(), responseParts.size());
     }
@@ -106,9 +106,9 @@ public class PartSorterUtilsTest {
         params.put("queryType", "V");
         params.put("order", "1");
 
-        when(partRepository.findByModifiedPriceAsc(any())).thenReturn(partsDB);
+        when(orderRepository.findByModifiedPriceAsc(any())).thenReturn(partsDB);
 
-        List<Part> responseParts = PartSorterUtils.getSorter(params, partRepository, new Date());
+        List<Part> responseParts = PartSorterUtils.getSorter(params, orderRepository, new Date());
 
         Assertions.assertEquals(parts.size(), responseParts.size());
     }
@@ -124,10 +124,10 @@ public class PartSorterUtilsTest {
         params.put("queryType", "V");
         params.put("order", "2");
 
-        when(partRepository.findByModifiedPriceDesc(any())).thenReturn(partsDB);
+        when(orderRepository.findByModifiedPriceDesc(any())).thenReturn(partsDB);
 
-        List<Part> responseParts = PartSorterUtils.getSorter(params, partRepository, new Date());
+        List<Part> responseParts = PartSorterUtils.getSorter(params, orderRepository, new Date());
 
         Assertions.assertEquals(parts.size(), responseParts.size());
-    }
+    }*/
 }

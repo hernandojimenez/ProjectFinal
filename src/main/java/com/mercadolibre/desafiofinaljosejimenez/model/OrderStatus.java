@@ -15,8 +15,8 @@ public class OrderStatus {
     @Column(nullable = false)
     private int code;
 
-    @Column(nullable = false)
-    private String description;
+    @Column(nullable = false, length = 100)
+    private String reason;
 
     @OneToMany(mappedBy = "orderStatus", cascade = CascadeType.PERSIST)
     private Set<OrderCM> orderCM;
@@ -41,17 +41,17 @@ public class OrderStatus {
     }
 
     public String getDescription() {
-        return description;
+        return reason;
     }
 
     public void setDescription(String description) {
-        this.description = description;
+        this.reason = description;
     }
 
     public OrderStatus(Long id, int code, String description) {
         this.id = id;
         this.code = code;
-        this.description = description;
+        this.reason = description;
     }
 
     public OrderStatus() {}

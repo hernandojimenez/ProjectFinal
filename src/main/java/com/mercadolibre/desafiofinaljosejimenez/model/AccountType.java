@@ -12,7 +12,7 @@ public class AccountType {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 1)
     private String description;
 
     @OneToMany(mappedBy = "accountType", cascade = CascadeType.PERSIST)

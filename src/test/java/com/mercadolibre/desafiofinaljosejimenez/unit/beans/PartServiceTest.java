@@ -24,9 +24,6 @@ public class PartServiceTest {
     @Mock
     private PartRepository partRepository;
 
-    @Mock
-    private ModelMapper modelMapper;
-
     @InjectMocks
     private PartServiceImpl partService;
 
@@ -41,7 +38,7 @@ public class PartServiceTest {
         List<Part> partsDB = GeneralTestUtils.getPartsDB();
         List<PartResponseDTO> parts = GeneralTestUtils.getParts();
 
-        when(partRepository.findByModifiedAttributeDesc(any())).thenReturn(partsDB);
+        when(partRepository.findAll()).thenReturn(partsDB);
 
         List<PartResponseDTO> responseParts = partService.getParts(new HashMap<>());
 

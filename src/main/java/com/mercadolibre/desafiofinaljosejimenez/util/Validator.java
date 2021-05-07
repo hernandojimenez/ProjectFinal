@@ -44,7 +44,7 @@ public class Validator {
     }
 
     public static boolean validFiltersOrders(Map<String, String> filters) {
-        if (filters.size() == 0) return true;
+        if (filters.size() == 0) throw new InvalidFilterInformation("You did not enter any filter");
 
         for (Map.Entry<String, String> entry : filters.entrySet()) {
             if(!(entry.getKey().equals("dealerNumber") || entry.getKey().equals("deliveryStatus") || entry.getKey().equals("order"))) throw new InvalidFilterInformation("You´ve entered invalid Filters");

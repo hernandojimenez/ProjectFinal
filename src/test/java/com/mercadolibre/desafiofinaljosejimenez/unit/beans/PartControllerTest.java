@@ -3,6 +3,8 @@ package com.mercadolibre.desafiofinaljosejimenez.unit.beans;
 import com.mercadolibre.desafiofinaljosejimenez.controller.PartController;
 import com.mercadolibre.desafiofinaljosejimenez.dtos.response.PartResponseDTO;
 import com.mercadolibre.desafiofinaljosejimenez.exceptions.InvalidFilterInformation;
+import com.mercadolibre.desafiofinaljosejimenez.security.JwtTokenUtil;
+import com.mercadolibre.desafiofinaljosejimenez.service.JwtUserDetailsService;
 import com.mercadolibre.desafiofinaljosejimenez.service.PartService;
 import com.mercadolibre.desafiofinaljosejimenez.util.GeneralTestUtils;
 import org.junit.jupiter.api.Assertions;
@@ -25,14 +27,20 @@ public class PartControllerTest {
     @Mock
     private PartService partService;
 
+    @Mock
+    private JwtTokenUtil jwtTokenUtil;
+
+    @Mock
+    private JwtUserDetailsService jwtUserDetailsService;
+
     @InjectMocks
     private PartController partController;
 
     @BeforeEach
     void setUp() {
-        partController = new PartController(partService);
-
         MockitoAnnotations.initMocks(this);
+
+        partController = new PartController(partService, jwtTokenUtil, jwtUserDetailsService);
     }
 
     @Test
@@ -41,8 +49,10 @@ public class PartControllerTest {
         List<PartResponseDTO> parts = GeneralTestUtils.getParts();
 
         when(partService.getParts(any())).thenReturn(parts);
+        when(jwtTokenUtil.getUsernameFromToken(any())).thenReturn("User");
+        when(jwtUserDetailsService.autorizado(any(), any())).thenReturn(true);
 
-        ResponseEntity<List<PartResponseDTO>> responseParts = (ResponseEntity<List<PartResponseDTO>>)partController.getParts(null);
+        ResponseEntity<List<PartResponseDTO>> responseParts = (ResponseEntity<List<PartResponseDTO>>)partController.getParts(null, null);
 
         Assertions.assertEquals(parts, responseParts.getBody());
     }
@@ -58,7 +68,7 @@ public class PartControllerTest {
 
         filters.put("querytype", "P");
 
-        ResponseEntity<List<PartResponseDTO>> responseParts = (ResponseEntity<List<PartResponseDTO>>)partController.getParts(filters);
+        ResponseEntity<List<PartResponseDTO>> responseParts = (ResponseEntity<List<PartResponseDTO>>)partController.getParts(filters, null);
 
         Assertions.assertEquals(parts, responseParts.getBody());
     }
@@ -74,7 +84,7 @@ public class PartControllerTest {
         filters.put("date", "25/40/2021");
 
         try {
-            partController.getParts(filters);
+            partController.getParts(filters, null);
         }
         catch (InvalidFilterInformation e) {
             Assertions.assertTrue(e.getMessage().contains("Invalid date format"));
