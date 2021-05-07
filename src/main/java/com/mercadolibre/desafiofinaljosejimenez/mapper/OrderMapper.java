@@ -11,15 +11,7 @@ import java.util.List;
 public class OrderMapper {
 
    public static OrderResponseDTO mapOrderToResponse(OrderDE order){
-      if (order == null ) return null;
-
-       List<OrderDetailDTO> orderDetails = new ArrayList<>();
-       for (OrderDetailDE orderDetail : order.getOrderDetailDE()) {
-           OrderDetailDTO detailDTO = OrderMapper.mapOrderDetailsToResponse(orderDetail);
-           orderDetails.add(detailDTO);
-       }
-
-        return new OrderResponseDTO(order.get):
+      return null;
     }
 
     private static OrderDetailDTO mapOrderDetailsToResponse(OrderDetailDE order) {

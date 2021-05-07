@@ -33,7 +33,7 @@ public class OrderServiceImpl implements OrderService{
         List<OrderDE> dbOrders  = OrderSorterUtils.getSortedList(params, repository);
 
         //List<OrderResponseDTO> result = dbOrders.stream().map(order -> { return OrderMapper.mapOrderToResponse(order); }).collect(Collectors.toList());
-
-        return result;
+        return null;
+        //return result;
     }
 }
