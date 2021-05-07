@@ -1,7 +1,6 @@
 package com.mercadolibre.desafiofinaljosejimenez.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import org.jboss.jandex.Main;
 
 import javax.persistence.*;
 
@@ -13,7 +12,7 @@ public class StockCM {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 8)
     private int quantity;
 
     @OneToOne

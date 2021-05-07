@@ -1,13 +1,14 @@
 package com.mercadolibre.desafiofinaljosejimenez.service;
 
 import com.mercadolibre.desafiofinaljosejimenez.dtos.response.PartResponseDTO;
+import com.mercadolibre.desafiofinaljosejimenez.exceptions.NotFoundException;
 import com.mercadolibre.desafiofinaljosejimenez.mapper.PartMapper;
 import com.mercadolibre.desafiofinaljosejimenez.model.Part;
 import com.mercadolibre.desafiofinaljosejimenez.model.PartRecord;
 import com.mercadolibre.desafiofinaljosejimenez.repositories.PartRepository;
 import com.mercadolibre.desafiofinaljosejimenez.util.DateUtils;
 
-import com.mercadolibre.desafiofinaljosejimenez.util.SorterUtils;
+import com.mercadolibre.desafiofinaljosejimenez.util.PartSorterUtils;
 import com.mercadolibre.desafiofinaljosejimenez.util.Validator;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -44,12 +45,12 @@ public class PartServiceImpl implements PartService {
 
         Date daySelected = DateUtils.getDateFromString(date);
 
-        PartSorter sorter = SorterUtils.getSorter(params, repository);
+        List<Part> dbParts = PartSorterUtils.getSorter(params, repository,daySelected);
 
-        List<Part> dbParts = sorter.findParts(daySelected);
-
-        List<PartResponseDTO> result = dbParts.stream().map(part -> { return PartMapper.mapPartToResponse(part); }).collect(Collectors.toList());
-
-        return result;
+        if(!dbParts.isEmpty()){
+            List<PartResponseDTO> result = dbParts.stream().map(part -> { return PartMapper.mapPartToResponse(part); }).collect(Collectors.toList());
+            return result;
+        }
+        throw new NotFoundException("404 Not Found");
     }
 }

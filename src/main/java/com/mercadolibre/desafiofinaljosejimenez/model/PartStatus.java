@@ -12,10 +12,10 @@ public class PartStatus {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 8)
     private int code;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 100)
     private String description;
 
     @OneToMany(mappedBy = "partStatus", cascade = CascadeType.PERSIST)

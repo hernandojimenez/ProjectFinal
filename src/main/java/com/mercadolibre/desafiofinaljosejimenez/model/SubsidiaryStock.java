@@ -1,6 +1,5 @@
 package com.mercadolibre.desafiofinaljosejimenez.model;
 
-
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import javax.persistence.*;
 
