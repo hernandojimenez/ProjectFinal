@@ -76,7 +76,7 @@ public class PartControllerTest {
         try {
             partController.getParts(filters);
         }
-        catch (Exception e) {
+        catch (InvalidFilterInformation e) {
             Assertions.assertTrue(e.getMessage().contains("Invalid date format"));
         }
     }

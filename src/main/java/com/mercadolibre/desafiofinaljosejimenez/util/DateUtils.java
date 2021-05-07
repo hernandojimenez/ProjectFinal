@@ -13,6 +13,7 @@ public class DateUtils {
     {
         DateFormat sdf = new SimpleDateFormat(DATE_FORMAT);
         sdf.setLenient(false);
+
         try
         {
             return sdf.parse(date);

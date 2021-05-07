@@ -11,13 +11,12 @@ import java.util.Map;
 public class PartSorterUtils {
     //Sorting orders First Requirement
     public static List<Part> getSorter(Map<String, String> params, PartRepository repository, Date date) throws Exception {
-        if (params.size()== 0) return repository.findByModifiedAttributeDesc(date);
+        if (params.size() == 0) return repository.findByModifiedAttributeDesc(date);
 
         String queryType = params.get("queryType");
         String order = params.getOrDefault("order","1");
 
         switch (queryType) {
-
             case "C":
                 return repository.findAll();
 
