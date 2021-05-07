@@ -12,8 +12,6 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.ResponseEntity;
 
 import java.util.HashMap;
@@ -39,7 +37,7 @@ public class PartControllerTest {
 
     @Test
     @DisplayName("Gets all the parts with no filters applied")
-    public void getParts() throws Exception {
+    public void getAllParts() throws Exception {
         List<PartResponseDTO> parts = GeneralTestUtils.getParts();
 
         when(partService.getParts(any())).thenReturn(parts);

@@ -49,4 +49,10 @@ public class DiscountRate {
     public int hashCode() {
         return Objects.hash(id, description, discount);
     }
+
+    public DiscountRate(Long id, String description, double discount) {
+        this.id = id;
+        this.description = description;
+        this.discount = discount;
+    }
 }

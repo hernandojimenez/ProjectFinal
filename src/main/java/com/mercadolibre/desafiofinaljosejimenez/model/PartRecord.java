@@ -59,4 +59,14 @@ public class PartRecord {
     public DiscountRate getDiscountRate() {
         return discountRate;
     }
+
+    public PartRecord(Long id, Date lastModification, double normalPrice, double salePrice, double urgentPrice, String modifiedField, DiscountRate discountRate) {
+        this.id = id;
+        this.lastModification = lastModification;
+        this.normalPrice = normalPrice;
+        this.salePrice = salePrice;
+        this.urgentPrice = urgentPrice;
+        this.modifiedField = modifiedField;
+        this.discountRate = discountRate;
+    }
 }

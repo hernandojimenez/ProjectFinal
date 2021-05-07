@@ -92,6 +92,16 @@ public class Part {
         return partRecords;
     }
 
-
-
+    public Part(Long id, int partCode, String description, int widthDimension, int tallDimension, int longDimension, int netWeight, StockCM stockCM, Provider provider, Set<PartRecord> partRecords) {
+        this.id = id;
+        this.partCode = partCode;
+        this.description = description;
+        this.widthDimension = widthDimension;
+        this.tallDimension = tallDimension;
+        this.longDimension = longDimension;
+        this.netWeight = netWeight;
+        this.stockCM = stockCM;
+        this.provider = provider;
+        this.partRecords = partRecords;
+    }
 }

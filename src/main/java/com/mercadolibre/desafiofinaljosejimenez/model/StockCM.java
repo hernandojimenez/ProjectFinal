@@ -29,4 +29,9 @@ public class StockCM {
     public int getQuantity() {
         return quantity;
     }
+
+    public StockCM(Long id, int quantity) {
+        this.id = id;
+        this.quantity = quantity;
+    }
 }

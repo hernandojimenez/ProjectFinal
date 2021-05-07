@@ -29,4 +29,9 @@ public class Provider {
     public String getName() {
         return name;
     }
+
+    public Provider(Long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
 }
