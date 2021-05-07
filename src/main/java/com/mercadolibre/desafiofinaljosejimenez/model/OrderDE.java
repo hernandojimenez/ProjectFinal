@@ -29,14 +29,6 @@ public class OrderDE {
     @JsonBackReference
     private DeliveryStatus deliveryS;
 
-    public DeliveryStatus getDeliveryS() {
-        return deliveryS;
-    }
-
-    public void setDeliveryS(DeliveryStatus deliveryS) {
-        this.deliveryS = deliveryS;
-    }
-
     @ManyToOne
     @JoinColumn(name = "carrier_id", nullable = false)
     @JsonBackReference
@@ -59,4 +51,75 @@ public class OrderDE {
 
     @OneToMany(mappedBy = "order_de", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     private List<OrderDetailDE> orderDetailDE;
+
+    public DeliveryStatus getDeliveryS() {
+        return deliveryS;
+    }
+
+    public void setDeliveryS(DeliveryStatus deliveryS) {
+        this.deliveryS = deliveryS;
+    }
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Date getOrderDate() {
+        return orderDate;
+    }
+
+    public void setOrderDate(Date orderDate) {
+        this.orderDate = orderDate;
+    }
+
+    public Date getDeliveryDate() {
+        return deliveryDate;
+    }
+
+    public void setDeliveryDate(Date deliveryDate) {
+        this.deliveryDate = deliveryDate;
+    }
+
+    public Carrier getCarrier() {
+        return carrier;
+    }
+
+    public void setCarrier(Carrier carrier) {
+        this.carrier = carrier;
+    }
+
+    public OrderStatus getOrderStatus() {
+        return orderStatus;
+    }
+
+    public void setOrderStatus(OrderStatus orderStatus) {
+        this.orderStatus = orderStatus;
+    }
+
+    public OrderType getOrderType() {
+        return orderType;
+    }
+
+    public void setOrderType(OrderType orderType) {
+        this.orderType = orderType;
+    }
+
+    public Dealer getDealer() {
+        return dealer;
+    }
+
+    public void setDealer(Dealer dealer) {
+        this.dealer = dealer;
+    }
+
+    public List<OrderDetailDE> getOrderDetailDE() {
+        return orderDetailDE;
+    }
+
+    public void setOrderDetailDE(List<OrderDetailDE> orderDetailDE) {
+        this.orderDetailDE = orderDetailDE;
+    }
 }

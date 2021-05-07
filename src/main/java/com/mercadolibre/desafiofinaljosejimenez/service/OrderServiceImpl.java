@@ -1,34 +1,39 @@
 package com.mercadolibre.desafiofinaljosejimenez.service;
 
-import com.mercadolibre.desafiofinaljosejimenez.dtos.response.OrderDEResponse;
-import com.mercadolibre.desafiofinaljosejimenez.dtos.response.PartResponseDTO;
-import com.mercadolibre.desafiofinaljosejimenez.exceptions.NotFoundException;
-import com.mercadolibre.desafiofinaljosejimenez.mapper.PartMapper;
+import com.mercadolibre.desafiofinaljosejimenez.dtos.response.OrderDEResponseDTO;
+import com.mercadolibre.desafiofinaljosejimenez.mapper.OrderMapper;
 import com.mercadolibre.desafiofinaljosejimenez.model.OrderDE;
-import com.mercadolibre.desafiofinaljosejimenez.model.Part;
+import com.mercadolibre.desafiofinaljosejimenez.repositories.OrderRepository;
+import com.mercadolibre.desafiofinaljosejimenez.util.OrderSorterUtils;
+import com.mercadolibre.desafiofinaljosejimenez.util.Validator;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 public class OrderServiceImpl implements OrderService{
+    private final OrderRepository repository;
+
+    ModelMapper mapper;
+
+    public OrderServiceImpl(OrderRepository repository, ModelMapper mapper) {
+        this.repository = repository;
+        this.mapper = mapper;
+    }
+
+
     @Override
-    public List<OrderDEResponse> getOrders(Map<String, String> params) throws Exception {
-        //Validator.validFiltersOrders(params);
+    public List<OrderDEResponseDTO> getOrders(Map<String, String> params) throws Exception {
 
-        //PartSorter sorter = SorterUtils.getSorterOrder(params, repository);
+        Validator.validFiltersOrders(params);
 
-        //List<OrderDE> dbParts = sorter.findParts(daySelected);
+        List<OrderDE> dbOrders  = OrderSorterUtils.getSortedList(params, repository);
 
-        //List<OrderDEResponse> result = dbParts.stream().map(part -> { return PartMapper.mapPartToResponse(part); }).collect(Collectors.toList());
+        //List<OrderResponseDTO> result = dbOrders.stream().map(order -> { return OrderMapper.mapOrderToResponse(order); }).collect(Collectors.toList());
 
-        //if(!result.isEmpty()){
-        //    return result;
-        //}
-
-        return null;
-
-        //throw new NotFoundException("404 Not Found");
+        return result;
     }
 }

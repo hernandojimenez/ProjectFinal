@@ -57,4 +57,36 @@ public class OrderDetailDE {
     }
 
     public OrderDetailDE() {}
+
+    public Part getPart() {
+        return part;
+    }
+
+    public void setPart(Part part) {
+        this.part = part;
+    }
+
+    public OrderDE getOrder_de() {
+        return order_de;
+    }
+
+    public void setOrder_de(OrderDE order_de) {
+        this.order_de = order_de;
+    }
+
+    public AccountType getAccountType() {
+        return accountType;
+    }
+
+    public void setAccountType(AccountType accountType) {
+        this.accountType = accountType;
+    }
+
+    public PartStatus getPartStatus() {
+        return partStatus;
+    }
+
+    public void setPartStatus(PartStatus partStatus) {
+        this.partStatus = partStatus;
+    }
 }
