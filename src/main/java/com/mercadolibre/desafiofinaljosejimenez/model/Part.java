@@ -35,9 +35,12 @@ public class Part {
     private StockCM stockCM;
 
     @ManyToOne
-    @JoinColumn(name = "provider_id", referencedColumnName = "id")
+    @JoinColumn(name = "provider_id", referencedColumnName = "id", updatable = false, insertable = false)
     @JsonBackReference
     private Provider provider;
+
+    @Column(nullable = false)
+    private Long provider_id;
 
     @OneToMany(mappedBy = "part", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     private Set<PartRecord> partRecords;
@@ -102,5 +105,12 @@ public class Part {
         this.stockCM = stockCM;
         this.provider = provider;
         this.partRecords = partRecords;
+    }
+
+    public Part() {
+    }
+
+    public void setProvider_id(Long provider_id) {
+        this.provider_id = provider_id;
     }
 }

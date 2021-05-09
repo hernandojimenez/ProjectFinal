@@ -13,6 +13,6 @@ spring:
   datasource:
     platform: mysql
 
-    url: jdbc:mysql://localhost:3306/finaldb?useSSL=false&serverTimeZone=UTC
+    url: jdbc:mysql://localhost:3306/finaldb?useSSL=false&serverTimeZone=UTC&allowPublicKeyRetrieval=true
     username: ${LOCAL_DB_USER}
     password: ${LOCAL_DB_PASS}

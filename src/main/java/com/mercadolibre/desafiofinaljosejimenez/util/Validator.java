@@ -1,5 +1,6 @@
 package com.mercadolibre.desafiofinaljosejimenez.util;
 
+import com.mercadolibre.desafiofinaljosejimenez.dtos.request.PartDTO;
 import com.mercadolibre.desafiofinaljosejimenez.exceptions.InvalidFilterInformation;
 
 import java.util.Map;
@@ -72,6 +73,11 @@ public class Validator {
 
         //If valid order
         if (!(order.equals("1") || order.equals("2"))) throw new InvalidFilterInformation("Invalid order number");
+
+        return true;
+    }
+
+    public static boolean validPartDTO(PartDTO part) {
 
         return true;
     }

@@ -49,10 +49,13 @@ public class JwtUserDetailsService implements UserDetailsService {
 	}
 	public boolean autorizado(String username, Map<String, String> params){
 		UserCentral user = userRepository.findByUsernameEquals(username);
+
 		boolean value = true;//params.containsKey("hhhh");
-		if(user.getSubsidiary_id()==null && value) {
+
+		if(user.getSubsidiary_id() == null && value) {
 			throw new UsernameNotFoundException("User not found with username: " + username);
 		}
+
 		return true;
 	}
 	
