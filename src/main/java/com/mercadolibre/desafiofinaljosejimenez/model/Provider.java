@@ -26,6 +26,10 @@ public class Provider {
     @OneToMany(mappedBy = "provider",cascade = CascadeType.ALL)
     private Set<Part> parts;
 
+    public Provider() {
+
+    }
+
     public String getName() {
         return name;
     }

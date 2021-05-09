@@ -21,6 +21,10 @@ public class DiscountRate {
     @OneToMany(mappedBy = "discountRate",cascade = CascadeType.ALL)
     private Set<PartRecord> partRecords;
 
+    public DiscountRate() {
+
+    }
+
     public String getDescription() {
         return description;
     }

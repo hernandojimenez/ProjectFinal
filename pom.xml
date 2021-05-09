@@ -498,5 +498,10 @@
             <version>3.8.0</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.fury</groupId>
+            <artifactId>furyutils</artifactId>
+            <version>0.0.2</version>
+        </dependency>
     </dependencies>
 </project>

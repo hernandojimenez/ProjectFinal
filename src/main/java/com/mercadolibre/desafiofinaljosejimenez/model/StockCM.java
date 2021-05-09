@@ -25,6 +25,10 @@ public class StockCM {
     @JsonBackReference
     private MainSubsidiary main_subsidiary;
 
+    public StockCM() {
+
+    }
+
     public int getQuantity() {
         return quantity;
     }

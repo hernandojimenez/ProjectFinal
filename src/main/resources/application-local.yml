@@ -11,8 +11,17 @@ spring:
     hibernate:
       ddl-auto: update
   datasource:
-    platform: mysql
-
-    url: jdbc:mysql://localhost:3306/finaldb?useSSL=false&serverTimeZone=UTC
+    #    url: jdbc:mysql://${DB_MYSQL_DESAENV04_PROYFINAL_PROYFINAL_ENDPOINT}/proyfinal?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false
+    # host: localhost:3306
+    # db: proyectofinal_db
+    # username: final
+    # password: final
+    host: localhost:3306
+    db: finaldb
     username: ${LOCAL_DB_USER}
     password: ${LOCAL_DB_PASS}
+    initialization-mode: always
+    platform: mysql
+
+    server:
+      port: 8082 # no cambiar en prod

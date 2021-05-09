@@ -36,6 +36,10 @@ public class PartRecord {
     @JoinColumn(name = "discountRate_id", referencedColumnName = "id")
     private DiscountRate discountRate;
 
+    public PartRecord() {
+
+    }
+
     public Date getLastModification() {
         return lastModification;
     }

@@ -51,6 +51,10 @@ public class Part {
     @OneToMany(mappedBy = "part", cascade = CascadeType.PERSIST)
     private Set<OrderDetailDE> orderDetailsDE;
 
+    public Part() {
+
+    }
+
     public Long getId() {
         return id;
     }
