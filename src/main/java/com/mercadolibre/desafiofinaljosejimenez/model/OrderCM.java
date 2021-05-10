@@ -16,6 +16,9 @@ public class OrderCM {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false, length = 8)
+    private String orderNumber;
+
     @Column(nullable = false)
     private Date orderDate;
 
@@ -63,14 +66,109 @@ public class OrderCM {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         OrderCM order = (OrderCM) o;
-        return Objects.equals(id, order.id) && Objects.equals(orderDate, order.orderDate)
+        return Objects.equals(id, order.id) && Objects.equals(orderNumber,order.orderNumber) && Objects.equals(orderDate, order.orderDate)
                 && Objects.equals(deliveryDate, order.deliveryDate) && Objects.equals(deliveryStatus, order.deliveryStatus)
                 && Objects.equals(orderDetail, order.orderDetail) && Objects.equals(subsidiary, order.subsidiary);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, orderDate, deliveryDate, deliveryS, orderDetail, subsidiary);
+        return Objects.hash(id, orderNumber,orderDate, deliveryDate, deliveryS, orderDetail, subsidiary);
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getOrderNumber() {
+        return orderNumber;
+    }
+
+    public void setOrderNumber(String orderNumber) {
+        this.orderNumber = orderNumber;
+    }
+
+    public Date getOrderDate() {
+        return orderDate;
+    }
+
+    public void setOrderDate(Date orderDate) {
+        this.orderDate = orderDate;
+    }
+
+    public Date getDeliveryDate() {
+        return deliveryDate;
+    }
+
+    public void setDeliveryDate(Date deliveryDate) {
+        this.deliveryDate = deliveryDate;
+    }
+
+    public String getDeliveryStatus() {
+        return deliveryStatus;
+    }
+
+    public void setDeliveryStatus(String deliveryStatus) {
+        this.deliveryStatus = deliveryStatus;
+    }
+
+    public ShippingType getShippingType() {
+        return shippingType;
+    }
+
+    public void setShippingType(ShippingType shippingType) {
+        this.shippingType = shippingType;
+    }
+
+    public DeliveryStatus getDeliveryS() {
+        return deliveryS;
+    }
+
+    public void setDeliveryS(DeliveryStatus deliveryS) {
+        this.deliveryS = deliveryS;
+    }
+
+    public Carrier getCarrier() {
+        return carrier;
+    }
+
+    public void setCarrier(Carrier carrier) {
+        this.carrier = carrier;
+    }
+
+    public OrderStatus getOrderStatus() {
+        return orderStatus;
+    }
+
+    public void setOrderStatus(OrderStatus orderStatus) {
+        this.orderStatus = orderStatus;
+    }
+
+    public OrderType getOrderType() {
+        return orderType;
+    }
+
+    public void setOrderType(OrderType orderType) {
+        this.orderType = orderType;
+    }
+
+    public Subsidiary getSubsidiary() {
+        return subsidiary;
+    }
+
+    public void setSubsidiary(Subsidiary subsidiary) {
+        this.subsidiary = subsidiary;
+    }
+
+    public List<OrderDetail> getOrderDetail() {
+        return orderDetail;
+    }
+
+    public void setOrderDetail(List<OrderDetail> orderDetail) {
+        this.orderDetail = orderDetail;
+    }
 }

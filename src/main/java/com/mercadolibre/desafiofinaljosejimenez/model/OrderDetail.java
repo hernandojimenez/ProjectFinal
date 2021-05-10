@@ -42,6 +42,38 @@ public class OrderDetail {
         this.id = id;
     }
 
+    public OrderCM getOrder() {
+        return order;
+    }
+
+    public void setOrder(OrderCM order) {
+        this.order = order;
+    }
+
+    public Part getPart() {
+        return part;
+    }
+
+    public void setPart(Part part) {
+        this.part = part;
+    }
+
+    public AccountType getAccountType() {
+        return accountType;
+    }
+
+    public void setAccountType(AccountType accountType) {
+        this.accountType = accountType;
+    }
+
+    public PartStatus getPartStatus() {
+        return partStatus;
+    }
+
+    public void setPartStatus(PartStatus partStatus) {
+        this.partStatus = partStatus;
+    }
+
     public Integer getQuantity() {
         return quantity;
     }

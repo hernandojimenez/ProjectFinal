@@ -1,5 +1,6 @@
 package com.mercadolibre.desafiofinaljosejimenez.controller;
 
+import com.mercadolibre.desafiofinaljosejimenez.dtos.response.OrderCMResponseDTO;
 import com.mercadolibre.desafiofinaljosejimenez.dtos.response.OrderDEResponseDTO;
 import com.mercadolibre.desafiofinaljosejimenez.dtos.response.OrderResponseDTO;
 import com.mercadolibre.desafiofinaljosejimenez.security.JwtTokenUtil;
@@ -28,10 +29,19 @@ public class OrderController {
     }
 
     @GetMapping("/orders")
-    public ResponseEntity<OrderDEResponseDTO> getParts(@RequestParam Map<String, String> params,@RequestHeader("Authorization") String token) throws Exception {
+    public ResponseEntity<?> getParts(@RequestParam Map<String, String> params, @RequestParam(required = false) String orderNumer,
+    @RequestHeader("Authorization") String token) throws Exception {
         String username = jwtTokenUtil.getUsernameFromToken(token);
-        boolean res = jwtUserDetailsService.autorizado(username,params);
-        OrderDEResponseDTO ode = orderService.getOrders(params);
-        return new ResponseEntity(ode, HttpStatus.OK);
+        OrderCMResponseDTO ocm = new OrderCMResponseDTO();
+        OrderDEResponseDTO ode = new OrderDEResponseDTO();
+        if(orderNumer!=null){
+            boolean res = jwtUserDetailsService.autorizado(username,params,orderNumer);
+            ocm =orderService.getOrdersCM(orderNumer);
+            return new ResponseEntity(ocm, HttpStatus.OK);
+        }else{
+            ode =orderService.getOrders(params);
+            boolean res = jwtUserDetailsService.autorizado(username,params,"");
+            return new ResponseEntity(ode, HttpStatus.OK);
+        }
     }
 }
