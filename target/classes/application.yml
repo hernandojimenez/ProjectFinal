@@ -28,5 +28,5 @@ springdoc:
 
 app:
   title: desafiofinaljosejimenez
-  description: desafiofinaljosejimenez
+  description: @project.description@
   version: last
