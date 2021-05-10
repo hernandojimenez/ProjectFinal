@@ -42,6 +42,22 @@ public class OrderDetail {
         this.id = id;
     }
 
+    public OrderCM getOrder() {
+        return order;
+    }
+
+    public Part getPart() {
+        return part;
+    }
+
+    public AccountType getAccountType() {
+        return accountType;
+    }
+
+    public PartStatus getPartStatus() {
+        return partStatus;
+    }
+
     public Integer getQuantity() {
         return quantity;
     }

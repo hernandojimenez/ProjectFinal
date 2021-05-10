@@ -50,7 +50,7 @@ public class PartControllerTest {
 
         when(partService.getParts(any())).thenReturn(parts);
         when(jwtTokenUtil.getUsernameFromToken(any())).thenReturn("User");
-        when(jwtUserDetailsService.autorizado(any(), any())).thenReturn(true);
+        when(jwtUserDetailsService.autorizado(any(), any(),"")).thenReturn(true);
 
         ResponseEntity<List<PartResponseDTO>> responseParts = (ResponseEntity<List<PartResponseDTO>>)partController.getParts(null, null);
 

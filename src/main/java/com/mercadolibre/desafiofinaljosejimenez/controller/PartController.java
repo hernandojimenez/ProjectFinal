@@ -6,9 +6,9 @@ import com.mercadolibre.desafiofinaljosejimenez.service.JwtUserDetailsService;
 import com.mercadolibre.desafiofinaljosejimenez.service.PartService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -31,16 +31,16 @@ public class PartController {
     @GetMapping("/list")
     public ResponseEntity<?> getParts(@RequestParam Map<String, String> params, @RequestHeader("Authorization") String token) throws Exception {
         String username = jwtTokenUtil.getUsernameFromToken(token);
-        boolean res = jwtUserDetailsService.autorizado(username,params);
+        boolean res = jwtUserDetailsService.autorizado(username,params,"");
         return new ResponseEntity(partService.getParts(params), HttpStatus.OK);
     }
 
     @PostMapping
-    public ResponseEntity<?> savePart(@RequestBody PartDTO part, @RequestHeader("Authorization") String token) throws Exception {
+    public ResponseEntity<?> savePart(@Valid @RequestBody PartDTO part, @RequestHeader("Authorization") String token) throws Exception{
         String username = jwtTokenUtil.getUsernameFromToken(token);
-        boolean res = jwtUserDetailsService.autorizado(username, new HashMap<>());
+        boolean res = jwtUserDetailsService.autorizado(username, new HashMap<>(),"");
 
-        return new ResponseEntity(partService.savePart(part), HttpStatus.CREATED);
+         return new ResponseEntity(partService.savePart(part), HttpStatus.CREATED);
     }
 
 

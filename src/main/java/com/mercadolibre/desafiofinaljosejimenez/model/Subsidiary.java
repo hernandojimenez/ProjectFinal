@@ -65,4 +65,20 @@ public class Subsidiary {
     public int hashCode() {
         return Objects.hash(name, address, phone, country);
     }
+
+    public String getSubsidiaryNumber() {
+        return subsidiaryNumber;
+    }
+
+    public void setSubsidiaryNumber(String subsidiaryNumber) {
+        this.subsidiaryNumber = subsidiaryNumber;
+    }
+
+    public Set<Dealer> getDealers() {
+        return dealers;
+    }
+
+    public void setDealers(Set<Dealer> dealers) {
+        this.dealers = dealers;
+    }
 }
