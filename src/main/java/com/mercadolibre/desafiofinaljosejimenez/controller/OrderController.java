@@ -28,7 +28,7 @@ public class OrderController {
     }
 
     @GetMapping("/orders")
-    public ResponseEntity<OrderDEResponseDTO> getParts(@RequestParam Map<String, String> params,@RequestHeader("Authorization") String token) throws Exception {
+    public ResponseEntity<OrderDEResponseDTO> getOrders(@RequestParam Map<String, String> params,@RequestHeader("Authorization") String token) throws Exception {
         String username = jwtTokenUtil.getUsernameFromToken(token);
         boolean res = jwtUserDetailsService.autorizado(username,params);
         OrderDEResponseDTO ode = orderService.getOrders(params);

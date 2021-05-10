@@ -1,7 +1,11 @@
 package com.mercadolibre.desafiofinaljosejimenez.util;
 
+import com.mercadolibre.desafiofinaljosejimenez.dtos.response.OrderDEResponseDTO;
+import com.mercadolibre.desafiofinaljosejimenez.dtos.response.OrderDetailDTO;
+import com.mercadolibre.desafiofinaljosejimenez.dtos.response.OrderResponseDTO;
 import com.mercadolibre.desafiofinaljosejimenez.dtos.response.PartResponseDTO;
 import com.mercadolibre.desafiofinaljosejimenez.model.*;
+import org.aspectj.weaver.ast.Or;
 
 import java.util.*;
 
@@ -43,4 +47,89 @@ public class GeneralTestUtils {
 
         return parts;
     }
+
+    public static List<OrderResponseDTO> getOrdersDE() {
+        List<OrderResponseDTO> orders = new ArrayList<OrderResponseDTO>();
+
+        List<OrderDetailDTO> orderDetails = new ArrayList<>();
+
+        orderDetails.add(new OrderDetailDTO(12345678, "desc", 3, "R", "P"));
+
+        orders.add(new OrderResponseDTO(11232323L, new Date(), new Date(), 4, "P", orderDetails));
+        orders.add(new OrderResponseDTO(87654321L, new Date(), new Date(), 5, "D", orderDetails));
+        orders.add(new OrderResponseDTO(11223344L, new Date(), new Date(), 6, "F", orderDetails));
+
+        return orders;
+    }
+
+    public static List<OrderResponseDTO> getOrdersDEWithFilters() {
+        List<OrderResponseDTO> orders = new ArrayList<OrderResponseDTO>();
+
+        List<OrderDetailDTO> orderDetails = new ArrayList<>();
+
+        orderDetails.add(new OrderDetailDTO(12345678, "desc", 3, "R", "P"));
+
+        orders.add(new OrderResponseDTO(11232323L, new Date(), new Date(), 4, "P", orderDetails));
+
+        return orders;
+    }
+
+    public static OrderDEResponseDTO getOrderDEResponse() {
+        List<OrderResponseDTO> orders = new ArrayList<OrderResponseDTO>();
+
+        List<OrderDetailDTO> orderDetails = new ArrayList<>();
+
+        orderDetails.add(new OrderDetailDTO(12345678, "desc", 3, "R", "P"));
+
+        orders.add(new OrderResponseDTO(11232323L, new Date(), new Date(), 4, "P", orderDetails));
+        orders.add(new OrderResponseDTO(87654321L, new Date(), new Date(), 5, "D", orderDetails));
+        orders.add(new OrderResponseDTO(11223344L, new Date(), new Date(), 6, "F", orderDetails));
+
+        return new OrderDEResponseDTO("1234", orders);
+    }
+
+    public static OrderDEResponseDTO getOrderDEResponseWithFilters() {
+        List<OrderResponseDTO> orders = new ArrayList<OrderResponseDTO>();
+
+        List<OrderDetailDTO> orderDetails = new ArrayList<>();
+
+        orderDetails.add(new OrderDetailDTO(12345678, "desc", 3, "R", "P"));
+
+        orders.add(new OrderResponseDTO(11232323L, new Date(), new Date(), 4, "P", orderDetails));
+
+        return new OrderDEResponseDTO("1234", orders);
+    }
+
+    public static List<OrderDE> getOrdersDEDB() {
+        List<OrderDE> orders = new ArrayList<>();
+        List<OrderDetailDE> orderDetails = new ArrayList<>();
+
+        List<Part> parts = getPartsDB();
+
+        OrderDetailDE orderDetailDE = new OrderDetailDE(1L, parts.get(0), new AccountType(1L, "G"), 5);
+
+        orderDetails.add(orderDetailDE);
+
+        orderDetailDE = new OrderDetailDE(2L, parts.get(1), new AccountType(2L, "R"), 2);
+
+        orderDetails.add(orderDetailDE);
+
+        orderDetailDE = new OrderDetailDE(3L, parts.get(2), new AccountType(1L, "G"), 3);
+
+        orderDetails.add(orderDetailDE);
+
+        orders.add(new OrderDE(11232323L, new Date(), new Date(), new DeliveryStatus(1L, 4000, "C"), new OrderStatus(1L, 1000, "estado 1"), orderDetails));
+        orders.add(new OrderDE(87654321L, new Date(), new Date(), new DeliveryStatus(2L, 4001, "P"), new OrderStatus(2L, 1001, "estado 2"), orderDetails));
+        orders.add(new OrderDE(11223344L, new Date(), new Date(), new DeliveryStatus(3L, 4002, "D"), new OrderStatus(3L, 1002, "estado 3"), orderDetails));
+
+        return orders;
+    }
+
+    /*public static List<OrderDE> getOrdersDEDBWithFilters() {
+        List<OrderDE> orders = new ArrayList<>();
+
+        orders.add(new OrderDE(11232323L, new Date()));
+
+        return orders;
+    }*/
 }

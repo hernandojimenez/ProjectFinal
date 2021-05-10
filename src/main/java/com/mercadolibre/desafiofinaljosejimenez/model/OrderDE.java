@@ -52,6 +52,15 @@ public class OrderDE {
     @OneToMany(mappedBy = "order_de", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     private List<OrderDetailDE> orderDetailDE;
 
+    public OrderDE(Long id, Date orderDate, Date deliveryDate, DeliveryStatus deliveryS, OrderStatus orderStatus, List<OrderDetailDE> orderDetailDE) {
+        this.id = id;
+        this.orderDate = orderDate;
+        this.deliveryDate = deliveryDate;
+        this.deliveryS = deliveryS;
+        this.orderStatus = orderStatus;
+        this.orderDetailDE = orderDetailDE;
+    }
+
     public DeliveryStatus getDeliveryS() {
         return deliveryS;
     }

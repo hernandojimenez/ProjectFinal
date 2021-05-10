@@ -101,6 +101,14 @@ public class ValidatorTest {
     }
 
     @Test
+    @DisplayName("Invalid password format")
+    public void validatePasswordFormat() {
+        boolean response = Validator.isValidPass("password");
+
+        Assertions.assertFalse(response);
+    }
+
+    @Test
     @DisplayName("Validates query with a query type 'V'")
     public void validateQueryTypeVFilter() {
         Map<String, String> params = new HashMap<>();
