@@ -1,7 +1,7 @@
 package com.mercadolibre.desafiofinaljosejimenez.util;
 
 import com.mercadolibre.desafiofinaljosejimenez.dtos.request.PartDTO;
-import com.mercadolibre.desafiofinaljosejimenez.exceptions.InvalidFilterInformation;
+import com.mercadolibre.desafiofinaljosejimenez.exceptions.*;
 
 import java.util.Map;
 
@@ -82,10 +82,6 @@ public class Validator {
         return true;
     }
 
-    public static boolean validPartDTO(PartDTO part) {
-
-        return true;
-    }
 
     public static boolean isNumeric(String strNum) {
         try {
@@ -97,4 +93,6 @@ public class Validator {
 
         return true;
     }
+
+
 }

@@ -428,6 +428,27 @@
             <artifactId>mysql-connector-java</artifactId>
             <scope>runtime</scope>
         </dependency>
+        <!-- ___________________________________________________ -->
+        <!-- __________________ Documentación __________________ -->
+        <!-- Swagger2 Anotaciones-->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>2.8.0</version>
+        </dependency>
+        <!-- Swagger2 interfaz grafica-->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>2.8.0</version>
+        </dependency>
+
+        <!-- Swagger2 validadores-->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-bean-validators</artifactId>
+            <version>2.9.2</version>
+        </dependency>
         <!--Meli spring boot-->
         <dependency>
             <groupId>com.mercadolibre</groupId>
@@ -502,6 +523,15 @@
             <groupId>com.fury</groupId>
             <artifactId>furyutils</artifactId>
             <version>0.0.2</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+            <version>2.0.1.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
     </dependencies>
 </project>

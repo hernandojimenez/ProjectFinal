@@ -1,6 +1,4 @@
 
-9
-	README.md,8/e/8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
 {
 Ksrc/main/java/com/mercadolibre/desafiofinaljosejimenez/util/ScopeUtils.java,4/7/47d2369ec43fea79176148ed13a5b173bdce80a8
 ‚
@@ -20,8 +18,6 @@ Msrc/main/java/com/mercadolibre/desafiofinaljosejimenez/mapper/PartMapper.java,
 Ssrc/main/java/com/mercadolibre/desafiofinaljosejimenez/exceptions/ErrorMessage.java,d/7/d7da382d9264a1b75686ccc54bea316420945f97
 z
 Jsrc/main/java/com/mercadolibre/desafiofinaljosejimenez/util/DateUtils.java,9/2/92f4bde0624edb3326df8e6ea84aea236f4dc933
-’
-bsrc/main/java/com/mercadolibre/desafiofinaljosejimenez/dtos/request/SubsidiaryStockRequestDTO.java,a/4/a47c52d481cf38ce223408a1566ec31feb05cdbc
 ~
 Nsrc/main/java/com/mercadolibre/desafiofinaljosejimenez/model/DiscountRate.java,c/8/c8f94e3b313c4cc791447b4241e8d331528dd26d
 }
@@ -46,8 +42,6 @@ Qsrc/main/java/com/mercadolibre/desafiofinaljosejimenez/model/SubsidiaryStock.ja
 Lsrc/main/java/com/mercadolibre/desafiofinaljosejimenez/model/PartStatus.java,4/5/458bef38f99395c859588a2bafdd2b96c154db1a
 }
 Msrc/main/java/com/mercadolibre/desafiofinaljosejimenez/model/OrderDetail.java,c/9/c9a3ad802df37ace51ef1a1ce60933ae1f87b192
-Š
-Zsrc/main/java/com/mercadolibre/desafiofinaljosejimenez/service/FindAllPartsSorterImpl.java,4/d/4d91967c879e678cdc97335d3b2dac8e06a40902
 ‰
 Ysrc/main/java/com/mercadolibre/desafiofinaljosejimenez/dtos/response/PartResponseDTO.java,7/2/72a91ae9fe764c2d52d91aa209deddf132cfaf5c
 
