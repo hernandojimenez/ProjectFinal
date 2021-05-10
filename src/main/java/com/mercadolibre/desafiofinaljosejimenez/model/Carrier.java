@@ -27,7 +27,6 @@ public class Carrier {
     @OneToMany(mappedBy = "carrier", cascade = CascadeType.PERSIST)
     private Set<OrderCM> orderCM;
 
-
     public Carrier() {}
     @OneToMany(mappedBy = "carrier", cascade = CascadeType.PERSIST)
     private Set<OrderDE> orderDE;

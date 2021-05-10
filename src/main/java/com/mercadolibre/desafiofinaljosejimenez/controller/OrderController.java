@@ -1,5 +1,7 @@
 package com.mercadolibre.desafiofinaljosejimenez.controller;
 
+import com.mercadolibre.desafiofinaljosejimenez.dtos.request.OrderDTO;
+import com.mercadolibre.desafiofinaljosejimenez.dtos.request.PartDTO;
 import com.mercadolibre.desafiofinaljosejimenez.dtos.response.OrderDEResponseDTO;
 import com.mercadolibre.desafiofinaljosejimenez.dtos.response.OrderResponseDTO;
 import com.mercadolibre.desafiofinaljosejimenez.security.JwtTokenUtil;
@@ -9,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.Map;
 
 @RestController
@@ -33,5 +36,13 @@ public class OrderController {
         boolean res = jwtUserDetailsService.autorizado(username,params);
         OrderDEResponseDTO ode = orderService.getOrders(params);
         return new ResponseEntity(ode, HttpStatus.OK);
+    }
+
+    @PostMapping("/orders")
+    public ResponseEntity<?> saveOrderPart(@RequestBody OrderDTO order, @RequestHeader("Authorization") String token) throws Exception {
+        String username = jwtTokenUtil.getUsernameFromToken(token);
+        boolean res = jwtUserDetailsService.autorizado(username, new HashMap<>());
+
+        return new ResponseEntity(orderService.saveOrder(order), HttpStatus.CREATED);
     }
 }

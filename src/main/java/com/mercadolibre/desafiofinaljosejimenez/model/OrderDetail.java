@@ -54,6 +54,21 @@ public class OrderDetail {
         this.id = id;
         this.quantity = quantity;
     }
-
     public OrderDetail() {}
+
+    public void setOrder(OrderCM order) {
+        this.order = order;
+    }
+
+    public void setPart(Part part) {
+        this.part = part;
+    }
+
+    public void setAccountType(AccountType accountType) {
+        this.accountType = accountType;
+    }
+
+    public void setPartStatus(PartStatus partStatus) {
+        this.partStatus = partStatus;
+    }
 }

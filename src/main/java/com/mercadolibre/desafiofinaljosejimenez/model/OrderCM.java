@@ -17,13 +17,10 @@ public class OrderCM {
     private Long id;
 
     @Column(nullable = false)
-    private Date orderDate;
+    private Date orderDate = new Date();
 
-    @Column(nullable = false)
+    @Column
     private Date deliveryDate;
-
-    @Column(nullable = false, length = 1)
-    private String deliveryStatus;
 
     @ManyToOne
     @JoinColumn(name = "shippingType_id", nullable = false)
@@ -64,7 +61,7 @@ public class OrderCM {
         if (o == null || getClass() != o.getClass()) return false;
         OrderCM order = (OrderCM) o;
         return Objects.equals(id, order.id) && Objects.equals(orderDate, order.orderDate)
-                && Objects.equals(deliveryDate, order.deliveryDate) && Objects.equals(deliveryStatus, order.deliveryStatus)
+                && Objects.equals(deliveryDate, order.deliveryDate)
                 && Objects.equals(orderDetail, order.orderDetail) && Objects.equals(subsidiary, order.subsidiary);
     }
 

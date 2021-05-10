@@ -50,9 +50,8 @@ public interface OrderRepository extends JpaRepository<OrderDE, Long> {
             "JOIN DeliveryStatus ds on o.deliveryS.id = ds.id " +
             "JOIN Dealer d on o.dealer.id = d.id " +
             "WHERE ds.description = :deliveryStatus " +
-            "AND d.dealerNumber = :dealerNumber " )
+            "AND d.dealerNumber = :dealerNumber ")
     List<OrderDE> findByDealerAndStatus(@Param("dealerNumber") String dealerNumber, @Param("deliveryStatus") String deliveryStatus);
-
 
 
 }
