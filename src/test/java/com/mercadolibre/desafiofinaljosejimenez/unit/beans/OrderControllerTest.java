@@ -51,13 +51,13 @@ public class OrderControllerTest {
 
         when(orderService.getOrders(any())).thenReturn(order);
         when(jwtTokenUtil.getUsernameFromToken(any())).thenReturn("User");
-        when(jwtUserDetailsService.autorizado(any(), any())).thenReturn(true);
+        when(jwtUserDetailsService.autorizado(any(), any(), any())).thenReturn(true);
 
         Map<String, String> filters = new HashMap<>();
 
         filters.put("dealerNumber", "1234");
 
-        ResponseEntity<OrderDEResponseDTO> responseOrder = (ResponseEntity<OrderDEResponseDTO>)orderController.getOrders(filters, null);
+        ResponseEntity<OrderDEResponseDTO> responseOrder = (ResponseEntity<OrderDEResponseDTO>)orderController.getOrders(filters, null, null);
 
         Assertions.assertEquals(order, responseOrder.getBody());
     }
@@ -74,7 +74,7 @@ public class OrderControllerTest {
         filters.put("dealerNumber", "1234");
         filters.put("deliveryStatus", "P");
 
-        ResponseEntity<OrderDEResponseDTO> responseOrder = (ResponseEntity<OrderDEResponseDTO>)orderController.getOrders(filters, null);
+        ResponseEntity<OrderDEResponseDTO> responseOrder = (ResponseEntity<OrderDEResponseDTO>)orderController.getOrders(filters, null, null);
 
         Assertions.assertEquals(order, responseOrder.getBody());
     }
@@ -85,7 +85,7 @@ public class OrderControllerTest {
         when(orderService.getOrders(any())).thenThrow(new InvalidFilterInformation("You did not enter any filter"));
 
         try {
-            orderController.getOrders(new HashMap<>(), null);
+            orderController.getOrders(new HashMap<>(), null, null);
         }
         catch (InvalidFilterInformation e) {
             Assertions.assertTrue(e.getMessage().contains("You did not enter any filter"));

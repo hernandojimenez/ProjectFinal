@@ -15,6 +15,9 @@ public class OrderDE {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false, length = 8)
+    private String orderNumber;
+
     @Column(nullable = false)
     private Date orderDate;
 
@@ -130,5 +133,13 @@ public class OrderDE {
 
     public void setOrderDetailDE(List<OrderDetailDE> orderDetailDE) {
         this.orderDetailDE = orderDetailDE;
+    }
+
+    public String getOrderNumber() {
+        return orderNumber;
+    }
+
+    public void setOrderNumber(String orderNumber) {
+        this.orderNumber = orderNumber;
     }
 }

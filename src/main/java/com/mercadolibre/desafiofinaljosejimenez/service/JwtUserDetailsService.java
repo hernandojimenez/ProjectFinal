@@ -49,12 +49,10 @@ public class JwtUserDetailsService implements UserDetailsService {
 		return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(),
 				new ArrayList<>());
 	}
-	public boolean autorizado(String username, Map<String, String> params) throws Exception {
+	public boolean autorizado(String username, Map<String, String> params, String orderNumber) throws Exception {
 		UserCentral user = userRepository.findByUsernameEquals(username);
 
-		boolean value = true;//params.containsKey("hhhh");
-
-		if(user.getSubsidiary_id() == null && value) {
+		if(user.getSubsidiary_id() != null && orderNumber.length()>0) {
 			throw new UsernameNotFoundException("User not found with username: " + username);
 		}
 

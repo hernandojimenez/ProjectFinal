@@ -55,9 +55,9 @@ public class GeneralTestUtils {
 
         orderDetails.add(new OrderDetailDTO(12345678, "desc", 3, "R", "P"));
 
-        orders.add(new OrderResponseDTO(11232323L, new Date(), new Date(), 4, "P", orderDetails));
-        orders.add(new OrderResponseDTO(87654321L, new Date(), new Date(), 5, "D", orderDetails));
-        orders.add(new OrderResponseDTO(11223344L, new Date(), new Date(), 6, "F", orderDetails));
+        orders.add(new OrderResponseDTO("11232323", new Date(), new Date(), 4, "P", orderDetails));
+        orders.add(new OrderResponseDTO("87654321", new Date(), new Date(), 5, "D", orderDetails));
+        orders.add(new OrderResponseDTO("11223344", new Date(), new Date(), 6, "F", orderDetails));
 
         return orders;
     }
@@ -69,7 +69,7 @@ public class GeneralTestUtils {
 
         orderDetails.add(new OrderDetailDTO(12345678, "desc", 3, "R", "P"));
 
-        orders.add(new OrderResponseDTO(11232323L, new Date(), new Date(), 4, "P", orderDetails));
+        orders.add(new OrderResponseDTO("11232323", new Date(), new Date(), 4, "P", orderDetails));
 
         return orders;
     }
@@ -81,9 +81,9 @@ public class GeneralTestUtils {
 
         orderDetails.add(new OrderDetailDTO(12345678, "desc", 3, "R", "P"));
 
-        orders.add(new OrderResponseDTO(11232323L, new Date(), new Date(), 4, "P", orderDetails));
-        orders.add(new OrderResponseDTO(87654321L, new Date(), new Date(), 5, "D", orderDetails));
-        orders.add(new OrderResponseDTO(11223344L, new Date(), new Date(), 6, "F", orderDetails));
+        orders.add(new OrderResponseDTO("11232323", new Date(), new Date(), 4, "P", orderDetails));
+        orders.add(new OrderResponseDTO("87654321", new Date(), new Date(), 5, "D", orderDetails));
+        orders.add(new OrderResponseDTO("11223344", new Date(), new Date(), 6, "F", orderDetails));
 
         return new OrderDEResponseDTO("1234", orders);
     }
@@ -95,7 +95,7 @@ public class GeneralTestUtils {
 
         orderDetails.add(new OrderDetailDTO(12345678, "desc", 3, "R", "P"));
 
-        orders.add(new OrderResponseDTO(11232323L, new Date(), new Date(), 4, "P", orderDetails));
+        orders.add(new OrderResponseDTO("11232323", new Date(), new Date(), 4, "P", orderDetails));
 
         return new OrderDEResponseDTO("1234", orders);
     }

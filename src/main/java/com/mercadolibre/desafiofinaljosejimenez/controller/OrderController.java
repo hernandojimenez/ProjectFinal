@@ -1,7 +1,8 @@
 package com.mercadolibre.desafiofinaljosejimenez.controller;
 
+import com.mercadolibre.desafiofinaljosejimenez.dtos.request.OrderDTO;
+import com.mercadolibre.desafiofinaljosejimenez.dtos.response.OrderCMResponseDTO;
 import com.mercadolibre.desafiofinaljosejimenez.dtos.response.OrderDEResponseDTO;
-import com.mercadolibre.desafiofinaljosejimenez.dtos.response.OrderResponseDTO;
 import com.mercadolibre.desafiofinaljosejimenez.security.JwtTokenUtil;
 import com.mercadolibre.desafiofinaljosejimenez.service.JwtUserDetailsService;
 import com.mercadolibre.desafiofinaljosejimenez.service.OrderService;
@@ -9,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.Map;
 
 @RestController
@@ -28,10 +30,26 @@ public class OrderController {
     }
 
     @GetMapping("/orders")
-    public ResponseEntity<OrderDEResponseDTO> getOrders(@RequestParam Map<String, String> params,@RequestHeader("Authorization") String token) throws Exception {
+    public ResponseEntity<?> getOrders(@RequestParam Map<String, String> params, @RequestParam(required = false) String orderNumber,  @RequestHeader("Authorization") String token) throws Exception {
         String username = jwtTokenUtil.getUsernameFromToken(token);
-        boolean res = jwtUserDetailsService.autorizado(username,params);
-        OrderDEResponseDTO ode = orderService.getOrders(params);
-        return new ResponseEntity(ode, HttpStatus.OK);
+        OrderCMResponseDTO ocm = new OrderCMResponseDTO();
+        OrderDEResponseDTO ode = new OrderDEResponseDTO();
+        if(orderNumber!=null){
+            boolean res = jwtUserDetailsService.autorizado(username,params,orderNumber);
+            ocm =orderService.getOrdersCM(orderNumber);
+            return new ResponseEntity(ocm, HttpStatus.OK);
+        }else{
+            ode =orderService.getOrders(params);
+            boolean res = jwtUserDetailsService.autorizado(username,params,"");
+            return new ResponseEntity(ode, HttpStatus.OK);
+        }
+    }
+
+    @PostMapping("/orders")
+    public ResponseEntity<?> saveOrderPart(@RequestBody OrderDTO order, @RequestHeader("Authorization") String token) throws Exception {
+        String username = jwtTokenUtil.getUsernameFromToken(token);
+        boolean res = jwtUserDetailsService.autorizado(username, new HashMap<>(),"");
+
+        return new ResponseEntity(orderService.saveOrder(order), HttpStatus.CREATED);
     }
 }

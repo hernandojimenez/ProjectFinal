@@ -7,14 +7,14 @@ import java.util.List;
 
 public class OrderResponseDTO {
 
-    private Long orderNumber;
+    private String orderNumber;
     private Date orderDate;
     private Date deliveryDate;
     private int daysDelay;
     private String deliveryStatus;
     List<OrderDetailDTO> orderDetails;
 
-    public OrderResponseDTO(Long orderNumber, Date orderDate, Date deliveryDate, int daysDelay, String deliveryStatus, List<OrderDetailDTO> orderDetails) {
+    public OrderResponseDTO(String orderNumber, Date orderDate, Date deliveryDate, int daysDelay, String deliveryStatus, List<OrderDetailDTO> orderDetails) {
         this.orderNumber = orderNumber;
         this.orderDate = orderDate;
         this.deliveryDate = deliveryDate;
@@ -23,11 +23,11 @@ public class OrderResponseDTO {
         this.orderDetails = orderDetails;
     }
 
-    public Long getOrderNumber() {
+    public String getOrderNumber() {
         return orderNumber;
     }
 
-    public void setOrderNumber(Long orderNumber) {
+    public void setOrderNumber(String orderNumber) {
         this.orderNumber = orderNumber;
     }
 

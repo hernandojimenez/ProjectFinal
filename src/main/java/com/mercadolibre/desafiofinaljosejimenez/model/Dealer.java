@@ -36,4 +36,19 @@ public class Dealer {
     @JsonBackReference
     private Subsidiary subsidiary;
 
+    public String getDealerNumber() {
+        return dealerNumber;
+    }
+
+    public void setDealerNumber(String dealerNumber) {
+        this.dealerNumber = dealerNumber;
+    }
+
+    public Subsidiary getSubsidiary() {
+        return subsidiary;
+    }
+
+    public void setSubsidiary(Subsidiary subsidiary) {
+        this.subsidiary = subsidiary;
+    }
 }
