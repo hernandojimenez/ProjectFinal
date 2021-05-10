@@ -34,4 +34,5 @@ public class DiscountRate {
         this.description = description;
         this.discount = discount;
     }
+
 }

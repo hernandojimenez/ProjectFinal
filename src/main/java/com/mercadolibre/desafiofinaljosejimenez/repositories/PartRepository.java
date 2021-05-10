@@ -11,7 +11,7 @@ import java.util.Date;
 import java.util.List;
 
 @Repository
-public interface PartRepository extends JpaRepository<Part,Long> {
+public interface PartRepository extends JpaRepository<Part, Long> {
     @Query("select p from Part p " +
             "join PartRecord pr on p.id = pr.part.id " +
             "where pr.lastModification >= :date and pr.lastModification <= current_date " +
@@ -53,4 +53,6 @@ public interface PartRepository extends JpaRepository<Part,Long> {
             "or pr.modifiedField = 'urgent_price' " +
             "order by pr.lastModification desc")
     List<Part> findByModifiedPriceDesc(@Param("date") Date date);
+
+    Part findByPartCode(int partCode);
 }

@@ -31,13 +31,16 @@ public class OrderSorterUtils {
     }
     private static List<OrderDE> getSortedListWithParams(OrderRepository repository, String order, String dealerNumber, String deliveryStatus) {
         // query dealer number
-        if (order.equals("") && deliveryStatus.equals("")) return repository.findByDealerRequest(dealerNumber);
+        if (order.equals("") && deliveryStatus.equals(""))
+            return repository.findByDealerRequest(dealerNumber);
 
         // query dealer number and status
-        if (order.equals("") && ! deliveryStatus.equals("")) return repository.findByDealerAndStatus(dealerNumber, deliveryStatus);
+        if (order.equals("") && ! deliveryStatus.equals(""))
+            return repository.findByDealerAndStatus(dealerNumber, deliveryStatus);
 
         // query dealer number and order
-        if (! order.equals("") && deliveryStatus.equals("")) return getSorterByOrderAndDelear(repository,order,dealerNumber);
+        if (! order.equals("") && deliveryStatus.equals(""))
+            return getSorterByOrderAndDelear(repository,order,dealerNumber);
 
         // query dealer number, order and status
        return getSorterByOrderAndDelearNumberAndDeliveryStatus(repository,order,dealerNumber,deliveryStatus);

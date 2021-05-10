@@ -1,5 +1,6 @@
 package com.mercadolibre.desafiofinaljosejimenez.util;
 
+import com.mercadolibre.desafiofinaljosejimenez.dtos.request.PartDTO;
 import com.mercadolibre.desafiofinaljosejimenez.exceptions.InvalidFilterInformation;
 
 import java.util.Map;
@@ -42,9 +43,14 @@ public class Validator {
         String regex = "\\d{4}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|[3][01])";
         return availableDate.matches(regex);
     }
+    public static boolean isValidPass(String pass)  {
+        String regex = "^(?=\\w*\\d)(?=\\w*[A-Z])(?=\\w*[a-z])\\S{8,16}$";
+        return pass.matches(regex);
+    }
+
 
     public static boolean validFiltersOrders(Map<String, String> filters) {
-        if (filters.size() == 0) throw new InvalidFilterInformation("You did not enter any filter");
+       if (filters.size() == 0)  throw new InvalidFilterInformation("You did not enter any filter");
 
         for (Map.Entry<String, String> entry : filters.entrySet()) {
             if(!(entry.getKey().equals("dealerNumber") || entry.getKey().equals("deliveryStatus") || entry.getKey().equals("order"))) throw new InvalidFilterInformation("You´ve entered invalid Filters");
@@ -72,6 +78,11 @@ public class Validator {
 
         //If valid order
         if (!(order.equals("1") || order.equals("2"))) throw new InvalidFilterInformation("Invalid order number");
+
+        return true;
+    }
+
+    public static boolean validPartDTO(PartDTO part) {
 
         return true;
     }

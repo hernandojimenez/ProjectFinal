@@ -15,9 +15,9 @@ public class PartResponseDTO {
     private int longDimension;
     private int widthDimension;
     private int tallDimension;
-    private Date lastModification;
+    private String lastModification;
 
-    public PartResponseDTO(int partCode, String description, String maker, int quantity, String discountType, double normalPrice, double urgentPrice, int netWeight, int longDimension, int widthDimension, int tallDimension, Date lastModification) {
+    public PartResponseDTO(int partCode, String description, String maker, int quantity, String discountType, double normalPrice, double urgentPrice, int netWeight, int longDimension, int widthDimension, int tallDimension, String lastModification) {
         this.partCode = partCode;
         this.description = description;
         this.maker = maker;
@@ -120,11 +120,11 @@ public class PartResponseDTO {
         this.tallDimension = tallDimension;
     }
 
-    public Date getLastModification() {
+    public String getLastModification() {
         return lastModification;
     }
 
-    public void setLastModification(Date lastModification) {
+    public void setLastModification(String lastModification) {
         this.lastModification = lastModification;
     }
 }

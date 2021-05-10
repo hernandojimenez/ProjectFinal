@@ -73,4 +73,6 @@ public class PartRecord {
         this.modifiedField = modifiedField;
         this.discountRate = discountRate;
     }
+
+
 }
