@@ -148,7 +148,6 @@
     <orderEntry type="library" name="Maven: io.swagger.core.v3:swagger-integration:2.1.6" level="project" />
     <orderEntry type="library" name="Maven: io.swagger.core.v3:swagger-core:2.1.6" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.11.4" level="project" />
-    <orderEntry type="library" name="Maven: jakarta.validation:jakarta.validation-api:2.0.2" level="project" />
     <orderEntry type="library" name="Maven: io.github.classgraph:classgraph:4.8.69" level="project" />
     <orderEntry type="library" name="Maven: org.webjars:swagger-ui:3.38.0" level="project" />
     <orderEntry type="library" name="Maven: org.webjars:webjars-locator-core:0.46" level="project" />
@@ -234,5 +233,9 @@
     <orderEntry type="library" name="Maven: com.fury:furyutils:0.0.2" level="project" />
     <orderEntry type="library" name="Maven: com.googlecode.json-simple:json-simple:1.1.1" level="project" />
     <orderEntry type="library" name="Maven: log4j:log4j:1.2.12" level="project" />
+    <orderEntry type="library" name="Maven: javax.validation:validation-api:2.0.1.Final" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-validation:2.4.2" level="project" />
+    <orderEntry type="library" name="Maven: org.hibernate.validator:hibernate-validator:6.1.7.Final" level="project" />
+    <orderEntry type="library" name="Maven: jakarta.validation:jakarta.validation-api:2.0.2" level="project" />
   </component>
 </module>

@@ -18,8 +18,6 @@ Msrc/main/java/com/mercadolibre/desafiofinaljosejimenez/mapper/PartMapper.java,
 Ssrc/main/java/com/mercadolibre/desafiofinaljosejimenez/exceptions/ErrorMessage.java,d/7/d7da382d9264a1b75686ccc54bea316420945f97
 z
 Jsrc/main/java/com/mercadolibre/desafiofinaljosejimenez/util/DateUtils.java,9/2/92f4bde0624edb3326df8e6ea84aea236f4dc933
-’
-bsrc/main/java/com/mercadolibre/desafiofinaljosejimenez/dtos/request/SubsidiaryStockRequestDTO.java,a/4/a47c52d481cf38ce223408a1566ec31feb05cdbc
 ~
 Nsrc/main/java/com/mercadolibre/desafiofinaljosejimenez/model/DiscountRate.java,c/8/c8f94e3b313c4cc791447b4241e8d331528dd26d
 }
