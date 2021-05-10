@@ -14,13 +14,11 @@ import com.mercadolibre.desafiofinaljosejimenez.util.DateUtils;
 
 import com.mercadolibre.desafiofinaljosejimenez.util.PartSorterUtils;
 import com.mercadolibre.desafiofinaljosejimenez.util.Validator;
-import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
-import java.util.stream.Collectors;
 
 @Service
 public class PartServiceImpl implements PartService {
@@ -61,9 +59,9 @@ public class PartServiceImpl implements PartService {
     }
 
     @Override
-    public String savePart(PartDTO partDTO) {
+    public String savePart(PartDTO partDTO){
         // Validate parameters
-        Validator.validPartDTO(partDTO);
+        //Validator.validPartDTO(partDTO);
 
         Part part = partRepository.findByPartCode(partDTO.getPartCode());
 
