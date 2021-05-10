@@ -11,7 +11,7 @@ public class PartDTO {
     @Digits(integer=8,fraction = 0, message = "part code must have up to 8 numbers")
     private int partCode;
 
-    @Pattern(regexp="^^[A-Za-z1-9 A-Za-z1-9]{1,100}$",message="Description must have up to 100 characters")
+    @Pattern(regexp="^[A-Za-z1-9 A-Za-z1-9]{1,100}$",message="Description must have up to 100 characters")
     private String description;
 
     @Digits(integer=4,fraction = 0, message = "Width dimension must have up to 4 numbers")
