@@ -49,7 +49,7 @@ public class OrderServiceImpl implements OrderService{
     @Override
     public OrderCMResponseDTO getOrdersCM(String orderNummer) {
         String[] parts = orderNummer.split("-");
-        List<OrderCM> dbOrders = orderCMRepository.findByDealerAndStatusAscending(parts[0],parts[1],Long.parseLong(parts[2]));
+        List<OrderCM> dbOrders = orderCMRepository.findByDealerAndStatusAscending(parts[0],parts[1],parts[2]);
         List<OrderResponseCMDTO> result = dbOrders.stream().map(order -> { return OrderMapper.mapOrderToResponseCM(order,parts[1]); }).collect(Collectors.toList());
         return new OrderCMResponseDTO(result);
     }
