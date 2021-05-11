@@ -64,6 +64,10 @@ public class OrderDE {
         this.orderDetailDE = orderDetailDE;
     }
 
+    public OrderDE() {
+
+    }
+
     public DeliveryStatus getDeliveryS() {
         return deliveryS;
     }

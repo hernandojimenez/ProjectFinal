@@ -22,14 +22,22 @@ public class OrderDetail {
     private Part part;
 
     @ManyToOne
-    @JoinColumn(name = "accountType_id", nullable = false)
+    @JoinColumn(name = "accountType_id", nullable = false, updatable = false, insertable = false)
     @JsonBackReference
     private AccountType accountType;
 
+
+
+    @Column(nullable = false)
+    private Long accountType_id;
+
     @ManyToOne
-    @JoinColumn(name = "partStatus_id", nullable = false)
+    @JoinColumn(name = "partStatus_id", nullable = false, updatable = false, insertable = false)
     @JsonBackReference
     private PartStatus partStatus;
+
+    @Column(nullable = false)
+    private Long partStatus_id;
 
     @Column(nullable = false)
     private Integer quantity;
@@ -83,8 +91,21 @@ public class OrderDetail {
     public void setAccountType(AccountType accountType) {
         this.accountType = accountType;
     }
+    public Long getAccountType_id() {
+        return accountType_id;
+    }
 
+    public void setAccountType_id(Long accountType_id) {
+        this.accountType_id = accountType_id;
+    }
     public void setPartStatus(PartStatus partStatus) {
         this.partStatus = partStatus;
+    }
+    public Long getPartStatus_id() {
+        return partStatus_id;
+    }
+
+    public void setPartStatus_id(Long partStatus_id) {
+        this.partStatus_id = partStatus_id;
     }
 }

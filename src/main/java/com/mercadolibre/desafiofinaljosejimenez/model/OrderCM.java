@@ -26,34 +26,56 @@ public class OrderCM {
     private Date deliveryDate;
 
     @ManyToOne
-    @JoinColumn(name = "shippingType_id", nullable = false)
+    @JoinColumn(name = "shippingType_id", nullable = false, updatable = false, insertable = false)
     @JsonBackReference
     private ShippingType shippingType;
 
+    @Column(nullable = false)
+    private Long shippingType_id;
+
+
     @ManyToOne
-    @JoinColumn(name = "deliveryStatus_id", nullable = false)
+    @JoinColumn(name = "deliveryStatus_id", nullable = false, updatable = false, insertable = false)
     @JsonBackReference
     private DeliveryStatus deliveryS;
 
+
+    @Column(nullable = false)
+    private Long deliveryStatus_id;
+
+
     @ManyToOne
-    @JoinColumn(name = "carrier_id", nullable = false)
+    @JoinColumn(name = "carrier_id", nullable = false, updatable = false, insertable = false)
     @JsonBackReference
     private Carrier carrier;
 
+
+    @Column(nullable = false)
+    private Long carrier_id;
+
+
     @ManyToOne
-    @JoinColumn(name = "orderStatus_id", nullable = false)
+    @JoinColumn(name = "orderStatus_id", nullable = false, updatable = false, insertable = false)
     @JsonBackReference
     private OrderStatus orderStatus;
 
+
+    @Column(nullable = false)
+    private Long orderStatus_id;
+
     @ManyToOne
-    @JoinColumn(name = "orderType_id", nullable = false)
+    @JoinColumn(name = "orderType_id", nullable = false, updatable = false, insertable = false)
     @JsonBackReference
     private OrderType orderType;
+
+    @Column(nullable = false)
+    private Long orderType_id;
 
     @ManyToOne
     @JoinColumn(name = "subsidiary_id", nullable = false)
     @JsonBackReference
     private Subsidiary subsidiary;
+
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     private List<OrderDetail> orderDetail;
@@ -72,6 +94,27 @@ public class OrderCM {
     public int hashCode() {
         return Objects.hash(id, orderNumber,orderDate, deliveryDate, deliveryS, orderDetail, subsidiary);
     }
+
+    public void setShippingType_id(Long shippingType_id) {
+        this.shippingType_id = shippingType_id;
+    }
+
+    public void setDeliveryStatus_id(Long deliveryStatus_id) {
+        this.deliveryStatus_id = deliveryStatus_id;
+    }
+
+    public void setCarrier_id(Long carrier_id) {
+        this.carrier_id = carrier_id;
+    }
+
+    public void setOrderStatus_id(Long orderStatus_id) {
+        this.orderStatus_id = orderStatus_id;
+    }
+
+    public void setOrderType_id(Long orderType_id) {
+        this.orderType_id = orderType_id;
+    }
+
 
     public Long getId() {
         return id;
