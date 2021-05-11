@@ -108,27 +108,27 @@ public class OrderServiceImpl implements OrderService{
         if(orderCM.get().getOrderStatus().getDescription() == "F") throw new NotFoundException("Order is already finished");
         if(orderCM.get().getOrderStatus().getDescription() == "C") throw new NotFoundException("Order is already cancelled");
 
-        if(updateOrderDTO.getOrderStatus().toUpperCase(Locale.ROOT) == "C") {
+        if(updateOrderDTO.getOrderStatus() == "C") {
             orderCM.get().setOrderStatus_id(1L);
             OrderCM save = orderCMRepository.save(orderCM.get());
             return new StatusCodeDTO(200, "Order changed to Cancelled Successfully");
         }
 
-        if(updateOrderDTO.getOrderStatus().toUpperCase(Locale.ROOT) == "D") {
+        if(updateOrderDTO.getOrderStatus() == "D") {
             if(orderCM.get().getOrderStatus().getDescription() == "D") throw new NotFoundException("Order is already delayed");
             orderCM.get().setOrderStatus_id(3L);
             OrderCM save = orderCMRepository.save(orderCM.get());
             return new StatusCodeDTO(200, "Order changed to Delayed Successfully");
         }
 
-        if(updateOrderDTO.getOrderStatus().toUpperCase(Locale.ROOT) == "P" ) {
+        if(updateOrderDTO.getOrderStatus() == "P" ) {
             if(orderCM.get().getOrderStatus().getDescription() == "P") throw new NotFoundException("Order is already pending");
             orderCM.get().setOrderStatus_id(2L);
             OrderCM save = orderCMRepository.save(orderCM.get());
             return new StatusCodeDTO(200, "Order changed to Pending Successfully");
         }
 
-        if(updateOrderDTO.getOrderStatus().toUpperCase(Locale.ROOT) == "F" ) {
+        if(updateOrderDTO.getOrderStatus() == "F" ) {
             List<OrderDetail> orders = orderCM.get().getOrderDetail();
 
             for (OrderDetail order : orders) {
