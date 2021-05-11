@@ -58,6 +58,13 @@ public class OrderDetailDE {
 
     public OrderDetailDE() {}
 
+    public OrderDetailDE(Long id, Part part, AccountType accountType, Integer quantity) {
+        this.id = id;
+        this.part = part;
+        this.accountType = accountType;
+        this.quantity = quantity;
+    }
+
     public Part getPart() {
         return part;
     }

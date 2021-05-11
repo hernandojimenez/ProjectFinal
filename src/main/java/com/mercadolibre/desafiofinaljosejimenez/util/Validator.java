@@ -71,7 +71,7 @@ public class Validator {
         if (!isNumeric(dealerNumber)) throw new InvalidFilterInformation("Dealer number must have all numeric characters");
 
         //Valid type of delivery Status
-        if (!((deliveryStatus.equals("P") || deliveryStatus.equals("D")) || deliveryStatus.equals("F") || deliveryStatus.equals("C")|| deliveryStatus.equals(""))) throw new InvalidFilterInformation("Invalid Type of delivery status");
+        if (!deliveryStatus.equals("") && !((deliveryStatus.equals("P") || deliveryStatus.equals("D")) || deliveryStatus.equals("F") || deliveryStatus.equals("C"))) throw new InvalidFilterInformation("Invalid Type of delivery status");
 
         //If order is not in query
         if (order.equals("")) return true;

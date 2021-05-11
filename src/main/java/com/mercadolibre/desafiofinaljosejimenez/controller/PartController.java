@@ -31,15 +31,17 @@ public class PartController {
     @GetMapping("/list")
     public ResponseEntity<?> getParts(@RequestParam Map<String, String> params, @RequestHeader("Authorization") String token) throws Exception {
         String username = jwtTokenUtil.getUsernameFromToken(token);
-        boolean res = jwtUserDetailsService.autorizado(username,params);
+        boolean res = jwtUserDetailsService.autorizado(username,params,"");
         return new ResponseEntity(partService.getParts(params), HttpStatus.OK);
     }
 
     @PostMapping
     public ResponseEntity<?> savePart(@Valid @RequestBody PartDTO part, @RequestHeader("Authorization") String token) throws Exception{
         String username = jwtTokenUtil.getUsernameFromToken(token);
-        boolean res = jwtUserDetailsService.autorizado(username, new HashMap<>());
+        boolean res = jwtUserDetailsService.autorizado(username, new HashMap<>(),"");
 
          return new ResponseEntity(partService.savePart(part), HttpStatus.CREATED);
     }
+
+
 }

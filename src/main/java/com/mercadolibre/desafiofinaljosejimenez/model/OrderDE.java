@@ -15,6 +15,9 @@ public class OrderDE {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false, length = 8)
+    private String orderNumber;
+
     @Column(nullable = false)
     private Date orderDate;
 
@@ -51,6 +54,15 @@ public class OrderDE {
 
     @OneToMany(mappedBy = "order_de", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     private List<OrderDetailDE> orderDetailDE;
+
+    public OrderDE(Long id, Date orderDate, Date deliveryDate, DeliveryStatus deliveryS, OrderStatus orderStatus, List<OrderDetailDE> orderDetailDE) {
+        this.id = id;
+        this.orderDate = orderDate;
+        this.deliveryDate = deliveryDate;
+        this.deliveryS = deliveryS;
+        this.orderStatus = orderStatus;
+        this.orderDetailDE = orderDetailDE;
+    }
 
     public DeliveryStatus getDeliveryS() {
         return deliveryS;
@@ -121,5 +133,13 @@ public class OrderDE {
 
     public void setOrderDetailDE(List<OrderDetailDE> orderDetailDE) {
         this.orderDetailDE = orderDetailDE;
+    }
+
+    public String getOrderNumber() {
+        return orderNumber;
+    }
+
+    public void setOrderNumber(String orderNumber) {
+        this.orderNumber = orderNumber;
     }
 }

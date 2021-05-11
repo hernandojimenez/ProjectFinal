@@ -49,7 +49,7 @@ public class OrderSorterUtils {
 
     private static List<OrderDE> getSorterByOrderAndDelearNumberAndDeliveryStatus(OrderRepository repository, String order, String dealerNumber, String deliveryStatus) {
         if (order.equals("2")) return repository.findByDealerAndStatusDescending(dealerNumber,deliveryStatus);
-        return repository.findByDealerAndStatusDescending(dealerNumber,deliveryStatus);
+        return repository.findByDealerAndStatusAscending(dealerNumber,deliveryStatus);
     }
 
 

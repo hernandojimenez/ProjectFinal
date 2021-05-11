@@ -1,9 +1,13 @@
 package com.mercadolibre.desafiofinaljosejimenez.unit.beans;
 
+import com.mercadolibre.desafiofinaljosejimenez.dtos.response.OrderDEResponseDTO;
+import com.mercadolibre.desafiofinaljosejimenez.dtos.response.OrderResponseDTO;
 import com.mercadolibre.desafiofinaljosejimenez.dtos.response.PartResponseDTO;
+import com.mercadolibre.desafiofinaljosejimenez.model.OrderDE;
 import com.mercadolibre.desafiofinaljosejimenez.model.Part;
 import com.mercadolibre.desafiofinaljosejimenez.repositories.OrderRepository;
 import com.mercadolibre.desafiofinaljosejimenez.util.GeneralTestUtils;
+import com.mercadolibre.desafiofinaljosejimenez.util.OrderSorterUtils;
 import com.mercadolibre.desafiofinaljosejimenez.util.PartSorterUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -29,105 +33,112 @@ public class OrderSorterUtilsTest {
         MockitoAnnotations.initMocks(this);
     }
 
+    @Test
+    @DisplayName("Gets orders by dealer number")
+    public void getOrdersByDealerNumber() throws Exception {
+        List<OrderDE> ordersDB = GeneralTestUtils.getOrdersDEDB();
+        List<OrderResponseDTO> orders = GeneralTestUtils.getOrdersDE();
+
+        when(orderRepository.findByDealerRequest(any())).thenReturn(ordersDB);
+
+        Map<String, String> params = new HashMap<>();
+
+        params.put("dealerNumber", "1234");
+
+        List<OrderDE> responseOrders = OrderSorterUtils.getSortedList(params, orderRepository);
+
+        Assertions.assertEquals(orders.size(), responseOrders.size());
+    }
+
     /*@Test
-    @DisplayName("Gets all the parts with no filters applied")
-    public void getAllParts() throws Exception {
-        List<Part> partsDB = GeneralTestUtils.getPartsDB();
-        List<PartResponseDTO> parts = GeneralTestUtils.getParts();
+    @DisplayName("Gets orders by dealer number and delivery status")
+    public void getOrdersByDealerNumberAndDeliveryStatus() throws Exception {
+        List<OrderDE> ordersDB = GeneralTestUtils.getOrdersDEDBWithFilters();
+        List<OrderResponseDTO> orders = GeneralTestUtils.getOrdersDEWithFilters();
 
-        when(orderRepository.findAll()).thenReturn(partsDB);
-
-        List<Part> responseParts = PartSorterUtils.getSorter(new HashMap<>(), orderRepository, new Date());
-
-        Assertions.assertEquals(parts.size(), responseParts.size());
-    }
-
-    @Test
-    @DisplayName("Gets all the parts with query type 'C'")
-    public void getPartsQueryTypeC() throws Exception {
-        List<Part> partsDB = GeneralTestUtils.getPartsDB();
-        List<PartResponseDTO> parts = GeneralTestUtils.getParts();
+        when(orderRepository.findByDealerAndStatus(any(), any())).thenReturn(ordersDB);
 
         Map<String, String> params = new HashMap<>();
 
-        params.put("queryType", "C");
+        params.put("dealerNumber", "1234");
+        params.put("deliveryStatus", "P");
 
-        when(orderRepository.findAll()).thenReturn(partsDB);
+        List<OrderDE> responseOrders = OrderSorterUtils.getSortedList(params, orderRepository);
 
-        List<Part> responseParts = PartSorterUtils.getSorter(params, orderRepository, new Date());
-
-        Assertions.assertEquals(parts.size(), responseParts.size());
-    }
+        Assertions.assertEquals(orders.size(), responseOrders.size());
+    }*/
 
     @Test
-    @DisplayName("Gets all the parts with query type 'P' asc")
-    public void getPartsQueryTypePAsc() throws Exception {
-        List<Part> partsDB = GeneralTestUtils.getPartsDB();
-        List<PartResponseDTO> parts = GeneralTestUtils.getParts();
+    @DisplayName("Gets orders by dealer number ascending")
+    public void getOrdersByDealerNumberOrderAsc() throws Exception {
+        List<OrderDE> ordersDB = GeneralTestUtils.getOrdersDEDB();
+        List<OrderResponseDTO> orders = GeneralTestUtils.getOrdersDE();
+
+        when(orderRepository.findByDealerAscending(any())).thenReturn(ordersDB);
 
         Map<String, String> params = new HashMap<>();
 
-        params.put("queryType", "P");
+        params.put("dealerNumber", "1234");
         params.put("order", "1");
 
-        when(orderRepository.findByModifiedAttributeAsc(any())).thenReturn(partsDB);
+        List<OrderDE> responseOrders = OrderSorterUtils.getSortedList(params, orderRepository);
 
-        List<Part> responseParts = PartSorterUtils.getSorter(params, orderRepository, new Date());
-
-        Assertions.assertEquals(parts.size(), responseParts.size());
+        Assertions.assertEquals(orders.size(), responseOrders.size());
     }
 
     @Test
-    @DisplayName("Gets all the parts with query type 'P' desc")
-    public void getPartsQueryTypePDesc() throws Exception {
-        List<Part> partsDB = GeneralTestUtils.getPartsDB();
-        List<PartResponseDTO> parts = GeneralTestUtils.getParts();
+    @DisplayName("Gets orders by dealer number descending")
+    public void getOrdersByDealerNumberOrderDesc() throws Exception {
+        List<OrderDE> ordersDB = GeneralTestUtils.getOrdersDEDB();
+        List<OrderResponseDTO> orders = GeneralTestUtils.getOrdersDE();
+
+        when(orderRepository.findByDealerDescending(any())).thenReturn(ordersDB);
 
         Map<String, String> params = new HashMap<>();
 
-        params.put("queryType", "P");
+        params.put("dealerNumber", "1234");
         params.put("order", "2");
 
-        when(orderRepository.findByModifiedAttributeDesc(any())).thenReturn(partsDB);
+        List<OrderDE> responseOrders = OrderSorterUtils.getSortedList(params, orderRepository);
 
-        List<Part> responseParts = PartSorterUtils.getSorter(params, orderRepository, new Date());
-
-        Assertions.assertEquals(parts.size(), responseParts.size());
+        Assertions.assertEquals(orders.size(), responseOrders.size());
     }
 
-    @Test
-    @DisplayName("Gets all the parts with query type 'V' asc")
-    public void getPartsQueryTypeVAsc() throws Exception {
-        List<Part> partsDB = GeneralTestUtils.getPartsDB();
-        List<PartResponseDTO> parts = GeneralTestUtils.getParts();
+    /*@Test
+    @DisplayName("Gets orders by dealer number and delivery status ascending")
+    public void getOrdersByDealerNumberAndDeliveryStatusOrderAsc() throws Exception {
+        List<OrderDE> ordersDB = GeneralTestUtils.getOrdersDEDBWithFilters();
+        List<OrderResponseDTO> orders = GeneralTestUtils.getOrdersDEWithFilters();
+
+        when(orderRepository.findByDealerAndStatusAscending(any(), any())).thenReturn(ordersDB);
 
         Map<String, String> params = new HashMap<>();
 
-        params.put("queryType", "V");
+        params.put("dealerNumber", "1234");
+        params.put("deliveryStatus", "P");
         params.put("order", "1");
 
-        when(orderRepository.findByModifiedPriceAsc(any())).thenReturn(partsDB);
+        List<OrderDE> responseOrders = OrderSorterUtils.getSortedList(params, orderRepository);
 
-        List<Part> responseParts = PartSorterUtils.getSorter(params, orderRepository, new Date());
-
-        Assertions.assertEquals(parts.size(), responseParts.size());
+        Assertions.assertEquals(orders.size(), responseOrders.size());
     }
 
     @Test
-    @DisplayName("Gets all the parts with query type 'V' desc")
-    public void getPartsQueryTypeVDesc() throws Exception {
-        List<Part> partsDB = GeneralTestUtils.getPartsDB();
-        List<PartResponseDTO> parts = GeneralTestUtils.getParts();
+    @DisplayName("Gets orders by dealer number and delivery status descending")
+    public void getOrdersByDealerNumberAndDeliveryStatusOrderDesc() throws Exception {
+        List<OrderDE> ordersDB = GeneralTestUtils.getOrdersDEDBWithFilters();
+        List<OrderResponseDTO> orders = GeneralTestUtils.getOrdersDEWithFilters();
+
+        when(orderRepository.findByDealerAndStatusDescending(any(), any())).thenReturn(ordersDB);
 
         Map<String, String> params = new HashMap<>();
 
-        params.put("queryType", "V");
+        params.put("dealerNumber", "1234");
+        params.put("deliveryStatus", "P");
         params.put("order", "2");
 
-        when(orderRepository.findByModifiedPriceDesc(any())).thenReturn(partsDB);
+        List<OrderDE> responseOrders = OrderSorterUtils.getSortedList(params, orderRepository);
 
-        List<Part> responseParts = PartSorterUtils.getSorter(params, orderRepository, new Date());
-
-        Assertions.assertEquals(parts.size(), responseParts.size());
+        Assertions.assertEquals(orders.size(), responseOrders.size());
     }*/
 }
