@@ -1,18 +1,17 @@
 package com.mercadolibre.desafiofinaljosejimenez.dtos.request;
 
-import lombok.Data;
 import org.springframework.validation.annotation.Validated;
 
 import javax.validation.constraints.Pattern;
 
 @Validated
-public class UpdateOrderDTO {
+public class UpdateDeliveryDTO {
 
     @Pattern(regexp="^[0-9]{1,8}$",message="Order Number must have to 8 numbers")
     private String orderNumber;
 
     @Pattern(regexp="^[C-F-D-P]{1}$",message="Order Status must be  C, P, D, F")
-    private String orderStatus;
+    private String deliveryStatus;
 
     public String getOrderNumber() {
         return orderNumber;
@@ -22,11 +21,11 @@ public class UpdateOrderDTO {
         this.orderNumber = orderNumber;
     }
 
-    public String getOrderStatus() {
-        return orderStatus;
+    public String getDeliveryStatus() {
+        return deliveryStatus;
     }
 
-    public void setOrderStatus(String orderStatus) {
-        this.orderStatus = orderStatus;
+    public void setDeliveryStatus(String orderStatus) {
+        this.deliveryStatus = orderStatus;
     }
 }

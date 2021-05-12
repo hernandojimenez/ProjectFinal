@@ -11,7 +11,7 @@ public class OrderDTO {
     @Pattern(regexp="^[0-9]{1,8}$",message="Subsidiary Number must have to 8 digits")
     private String subsidiaryNumber;
 
-    @Pattern(regexp="^[0-9]{1,8}$",message="Order Number must have to 8 digits")
+    @Pattern(regexp="^[0-9]{8}$",message="Order Number must have 8 digits")
     private String orderNumber;
 
     List<PartQuantityDTO> parts;
