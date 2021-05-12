@@ -102,33 +102,40 @@ public class OrderServiceImpl implements OrderService{
         }
 
     public StatusCodeDTO updateOrder(UpdateOrderDTO updateOrderDTO) throws NotFoundException {
-
+        //bring order cm with order number
         Optional<OrderCM> orderCM = orderCMRepository.findOrderCMSByOrderNumber(updateOrderDTO.getOrderNumber());
         if (!orderCM.isPresent()) throw new NotFoundException("Order not found");
-        if(orderCM.get().getOrderStatus().getDescription() == "F") throw new NotFoundException("Order is already finished");
-        if(orderCM.get().getOrderStatus().getDescription() == "C") throw new NotFoundException("Order is already cancelled");
+        // if order is finished
+        if(orderCM.get().getOrderStatus().getDescription().equals("F")) throw new NotFoundException("Order is already finished");
+        // if order is cancelled
+        if(orderCM.get().getOrderStatus().getDescription().equals("C")) throw new NotFoundException("Order is already cancelled");
+        //get order details
+        List<OrderDetail> orderDetails = orderDetailRepository.findOrderDetailByOrder(orderCM.get().getId());
+        if(orderDetails.size() == 0) throw new NotFoundException("Order has no details");
 
-        if(updateOrderDTO.getOrderStatus() == "C") {
+        //change to cancelled status
+        if(updateOrderDTO.getOrderStatus().equals( "C")) {
             orderCM.get().setOrderStatus_id(1L);
             OrderCM save = orderCMRepository.save(orderCM.get());
             return new StatusCodeDTO(200, "Order changed to Cancelled Successfully");
         }
-
-        if(updateOrderDTO.getOrderStatus() == "D") {
-            if(orderCM.get().getOrderStatus().getDescription() == "D") throw new NotFoundException("Order is already delayed");
+        //change to delayed status
+        if(updateOrderDTO.getOrderStatus().equals( "D")) {
+            if(orderCM.get().getOrderStatus().getDescription().equals( "D")) throw new NotFoundException("Order is already delayed");
             orderCM.get().setOrderStatus_id(3L);
             OrderCM save = orderCMRepository.save(orderCM.get());
             return new StatusCodeDTO(200, "Order changed to Delayed Successfully");
         }
-
-        if(updateOrderDTO.getOrderStatus() == "P" ) {
-            if(orderCM.get().getOrderStatus().getDescription() == "P") throw new NotFoundException("Order is already pending");
+        //change to pending status
+        if(updateOrderDTO.getOrderStatus().equals( "P" )) {
+            if(orderCM.get().getOrderStatus().getDescription().equals("P")) throw new NotFoundException("Order is already pending");
             orderCM.get().setOrderStatus_id(2L);
             OrderCM save = orderCMRepository.save(orderCM.get());
             return new StatusCodeDTO(200, "Order changed to Pending Successfully");
         }
 
-        if(updateOrderDTO.getOrderStatus() == "F" ) {
+        //change to finished status
+        if(updateOrderDTO.getOrderStatus().equals( "F" )) {
             List<OrderDetail> orders = orderCM.get().getOrderDetail();
 
             for (OrderDetail order : orders) {
@@ -147,6 +154,8 @@ public class OrderServiceImpl implements OrderService{
         return new StatusCodeDTO(404, "No matching order Status type");
 
     }
+
+
 
 
 }
