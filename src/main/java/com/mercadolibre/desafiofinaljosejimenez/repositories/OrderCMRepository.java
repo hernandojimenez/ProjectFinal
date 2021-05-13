@@ -17,7 +17,7 @@ public interface OrderCMRepository extends JpaRepository<OrderCM,Long> {
     List<OrderCM> findBy(@Param("dealerNumber") String dealerNumber, @Param("deliveryStatus") String deliveryStatus);
 */
 
-    //lista de pedidos de un concesionario con el estado de pedido de pedido seleccionado
+    //dealer's orders list
     @Query("SELECT ocm FROM OrderCM ocm " +
             "JOIN Subsidiary s on ocm.subsidiary.id=s.id " +
             "JOIN Dealer d on s.id= d.subsidiary.id " +
@@ -26,6 +26,6 @@ public interface OrderCMRepository extends JpaRepository<OrderCM,Long> {
             "AND d.dealerNumber = :dealerNumber " +
             "AND ocm.orderNumber = :orderNumber " +
             "ORDER BY ode.orderDate ASC")
-    List<OrderCM> findByDealerAndStatusAscending(@Param("subsidiaryNumber") String subsidiaryNumber,@Param("dealerNumber") String dealerNumber,@Param("orderNumber") String orderNumber);
+    List<OrderCM> findBySubsidiaryAndDealerAndOrderNumberAscending(@Param("subsidiaryNumber") String subsidiaryNumber,@Param("dealerNumber") String dealerNumber,@Param("orderNumber") String orderNumber);
 
 }

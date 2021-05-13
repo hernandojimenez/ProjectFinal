@@ -73,6 +73,15 @@ public class OrderCM {
         return Objects.hash(id, orderNumber,orderDate, deliveryDate, deliveryS, orderDetail, subsidiary);
     }
 
+    public OrderCM(Long id, String orderNumber, Date orderDate, Date deliveryDate, OrderStatus orderStatus, List<OrderDetail> ordersDetail) {
+        this.id = id;
+        this.orderNumber = orderNumber;
+        this.orderDate = orderDate;
+        this.deliveryDate = deliveryDate;
+        this.orderStatus = orderStatus;
+        this.orderDetail = ordersDetail;
+    }
+
     public Long getId() {
         return id;
     }

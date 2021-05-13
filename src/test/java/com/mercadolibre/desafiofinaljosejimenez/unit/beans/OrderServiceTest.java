@@ -1,11 +1,11 @@
 package com.mercadolibre.desafiofinaljosejimenez.unit.beans;
 
+import com.mercadolibre.desafiofinaljosejimenez.dtos.response.OrderCMResponseDTO;
 import com.mercadolibre.desafiofinaljosejimenez.dtos.response.OrderDEResponseDTO;
 import com.mercadolibre.desafiofinaljosejimenez.dtos.response.OrderResponseDTO;
-import com.mercadolibre.desafiofinaljosejimenez.dtos.response.PartResponseDTO;
-import com.mercadolibre.desafiofinaljosejimenez.exceptions.NotFoundException;
+import com.mercadolibre.desafiofinaljosejimenez.model.OrderCM;
 import com.mercadolibre.desafiofinaljosejimenez.model.OrderDE;
-import com.mercadolibre.desafiofinaljosejimenez.model.Part;
+import com.mercadolibre.desafiofinaljosejimenez.repositories.OrderCMRepository;
 import com.mercadolibre.desafiofinaljosejimenez.repositories.OrderRepository;
 import com.mercadolibre.desafiofinaljosejimenez.service.OrderServiceImpl;
 import com.mercadolibre.desafiofinaljosejimenez.util.GeneralTestUtils;
@@ -17,7 +17,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,17 +28,20 @@ public class OrderServiceTest {
     @Mock
     private OrderRepository orderRepository;
 
+    @Mock
+    private OrderCMRepository orderCMRepository;
+
     @InjectMocks
     private OrderServiceImpl orderService;
 
     @BeforeEach
     void setUp() {
-        MockitoAnnotations.initMocks(this);
+        MockitoAnnotations.openMocks(this);
     }
 
     @Test
-    @DisplayName("Gets orders by dealer number")
-    public void getOrdersByDealerNumber() throws Exception {
+    @DisplayName("Gets orders DE by dealer number")
+    public void getOrdersDEByDealerNumber() throws Exception {
         List<OrderResponseDTO> ordersDE = GeneralTestUtils.getOrdersDE();
         List<OrderDE> ordersDEDB = GeneralTestUtils.getOrdersDEDB();
 
@@ -55,18 +57,17 @@ public class OrderServiceTest {
         Assertions.assertEquals(ordersDE.get(0).getDeliveryStatus(), orderResponse.getOrders().get(1).getDeliveryStatus());
     }
 
-    /*@Test
-    @DisplayName("Gets an exception because it could not find any parts")
-    public void partsNotFoundException() throws Exception {
-        List<Part> partsDB = new ArrayList<>();
+    @Test
+    @DisplayName("Gets orders CM")
+    public void getOrdersCM() throws Exception {
+        OrderCMResponseDTO orderCM = GeneralTestUtils.getOrderCMResponse();
+        List<OrderCM> ordersCMDB = GeneralTestUtils.getOrdersCMDB();
 
-        when(orderRepository.findByModifiedAttributeDesc(any())).thenReturn(partsDB);
+        when(orderCMRepository.findBySubsidiaryAndDealerAndOrderNumberAscending(any(), any(), any())).thenReturn(ordersCMDB);
 
-        try {
-            List<PartResponseDTO> responseParts = orderService.getParts(new HashMap<>());
-        }
-        catch (NotFoundException e) {
-            Assertions.assertTrue(e.getMessage().contains("404 Not Found"));
-        }
-    }*/
+        OrderCMResponseDTO orderResponse = orderService.getOrdersCM("1234-3001-12345678");
+
+        Assertions.assertEquals(orderCM.getOrders().get(0).getOrderDetails().size(), orderResponse.getOrders().size());
+        Assertions.assertTrue(orderResponse.getOrders().get(0).getOrderNumber().contains(orderCM.getOrders().get(0).getOrderNumber()));
+    }
 }

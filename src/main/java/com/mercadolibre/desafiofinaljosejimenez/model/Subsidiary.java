@@ -52,6 +52,10 @@ public class Subsidiary {
 
     }
 
+    public Subsidiary(String subsidiaryNumber) {
+        this.subsidiaryNumber = subsidiaryNumber;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

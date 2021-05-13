@@ -66,10 +66,14 @@ public class OrderDetail {
         this.quantity = quantity;
     }
 
-    public OrderDetail(Long id, Integer quantity) {
+    public OrderDetail(Long id, Part part, AccountType accountType, PartStatus partStatus, Integer quantity) {
         this.id = id;
+        this.part = part;
+        this.accountType = accountType;
+        this.partStatus = partStatus;
         this.quantity = quantity;
     }
+
     public OrderDetail() {}
 
     public void setOrder(OrderCM order) {

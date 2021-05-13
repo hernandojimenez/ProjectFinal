@@ -14,7 +14,7 @@ import java.util.Map;
 public class ValidatorTest {
     @BeforeEach
     void setUp() {
-        MockitoAnnotations.initMocks(this);
+        MockitoAnnotations.openMocks(this);
     }
 
     @Test

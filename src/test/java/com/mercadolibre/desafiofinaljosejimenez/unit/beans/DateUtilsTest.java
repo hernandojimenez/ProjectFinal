@@ -14,7 +14,7 @@ import java.util.Date;
 public class DateUtilsTest {
     @BeforeEach
     void setUp() {
-        MockitoAnnotations.initMocks(this);
+        MockitoAnnotations.openMocks(this);
     }
 
     @Test

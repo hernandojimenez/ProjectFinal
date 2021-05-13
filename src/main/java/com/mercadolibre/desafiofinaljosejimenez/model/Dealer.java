@@ -36,6 +36,11 @@ public class Dealer {
     @JsonBackReference
     private Subsidiary subsidiary;
 
+    public Dealer(String dealerNumber, Subsidiary subsidiary) {
+        this.dealerNumber = dealerNumber;
+        this.subsidiary = subsidiary;
+    }
+
     public String getDealerNumber() {
         return dealerNumber;
     }

@@ -48,7 +48,7 @@ public class OrderServiceImpl implements OrderService{
 
         List<OrderResponseDTO> result = dbOrders.stream().map(order -> { return OrderMapper.mapOrderToResponse(order); }).collect(Collectors.toList());
 
-        return new OrderDEResponseDTO(params.get("dealerNumber"),result);
+            return new OrderDEResponseDTO(params.get("dealerNumber"),result);
 
     }
 
@@ -70,7 +70,7 @@ public class OrderServiceImpl implements OrderService{
 
         public OrderCMResponseDTO getOrdersCM(String orderNumber){
             String[] parts = orderNumber.split("-");
-            List<OrderCM> dbOrders = orderCMRepository.findByDealerAndStatusAscending(parts[0], parts[1], parts[2]);
+            List<OrderCM> dbOrders = orderCMRepository.findBySubsidiaryAndDealerAndOrderNumberAscending(parts[0], parts[1], parts[2]);
             List<OrderResponseCMDTO> result = dbOrders.stream().map(order -> {
                 return OrderMapper.mapOrderToResponseCM(order, parts[1]);
             }).collect(Collectors.toList());

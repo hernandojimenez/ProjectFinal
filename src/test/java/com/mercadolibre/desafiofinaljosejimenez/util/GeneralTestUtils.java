@@ -1,9 +1,7 @@
 package com.mercadolibre.desafiofinaljosejimenez.util;
 
-import com.mercadolibre.desafiofinaljosejimenez.dtos.response.OrderDEResponseDTO;
-import com.mercadolibre.desafiofinaljosejimenez.dtos.response.OrderDetailDTO;
-import com.mercadolibre.desafiofinaljosejimenez.dtos.response.OrderResponseDTO;
-import com.mercadolibre.desafiofinaljosejimenez.dtos.response.PartResponseDTO;
+import com.mercadolibre.desafiofinaljosejimenez.dtos.request.PartDTO;
+import com.mercadolibre.desafiofinaljosejimenez.dtos.response.*;
 import com.mercadolibre.desafiofinaljosejimenez.model.*;
 import org.aspectj.weaver.ast.Or;
 
@@ -48,6 +46,16 @@ public class GeneralTestUtils {
         return parts;
     }
 
+    public static List<PartDTO> getPartsDTO() {
+        List<PartDTO> parts = new ArrayList<>();
+
+        parts.add(new PartDTO(12345678, "Motor V8", 80, 80, 80, 60, 4, "Buenos Aires"));
+        parts.add(new PartDTO(10000010, "Caja de cambios", 30, 50, 40, 20, 48, "Buenos Aires"));
+        parts.add(new PartDTO(11223344, "Llantas", 100, 20, 100, 50, 80, "Buenos Aires"));
+
+        return parts;
+    }
+
     public static List<OrderResponseDTO> getOrdersDE() {
         List<OrderResponseDTO> orders = new ArrayList<OrderResponseDTO>();
 
@@ -58,18 +66,6 @@ public class GeneralTestUtils {
         orders.add(new OrderResponseDTO("11232323", new Date(), new Date(), 4, "P", orderDetails));
         orders.add(new OrderResponseDTO("87654321", new Date(), new Date(), 5, "D", orderDetails));
         orders.add(new OrderResponseDTO("11223344", new Date(), new Date(), 6, "F", orderDetails));
-
-        return orders;
-    }
-
-    public static List<OrderResponseDTO> getOrdersDEWithFilters() {
-        List<OrderResponseDTO> orders = new ArrayList<OrderResponseDTO>();
-
-        List<OrderDetailDTO> orderDetails = new ArrayList<>();
-
-        orderDetails.add(new OrderDetailDTO(12345678, "desc", 3, "R", "P"));
-
-        orders.add(new OrderResponseDTO("11232323", new Date(), new Date(), 4, "P", orderDetails));
 
         return orders;
     }
@@ -118,18 +114,58 @@ public class GeneralTestUtils {
 
         orderDetails.add(orderDetailDE);
 
-        orders.add(new OrderDE(11232323L, new Date(), new Date(), new DeliveryStatus(1L, 4000, "C"), new OrderStatus(1L, 1000, "estado 1"), orderDetails));
-        orders.add(new OrderDE(87654321L, new Date(), new Date(), new DeliveryStatus(2L, 4001, "P"), new OrderStatus(2L, 1001, "estado 2"), orderDetails));
-        orders.add(new OrderDE(11223344L, new Date(), new Date(), new DeliveryStatus(3L, 4002, "D"), new OrderStatus(3L, 1002, "estado 3"), orderDetails));
+        Subsidiary subsidiary = new Subsidiary("1234");
+
+        orders.add(new OrderDE(11232323L, "11232323", new Date(), new Date(), new DeliveryStatus(1L, 4000, "C"), new OrderStatus(1L, 1000, "estado 1"), new Dealer("1234", subsidiary), orderDetails));
+        orders.add(new OrderDE(87654321L, "87654321", new Date(), new Date(), new DeliveryStatus(2L, 4001, "P"), new OrderStatus(2L, 1001, "estado 2"), new Dealer("4321", subsidiary), orderDetails));
+        orders.add(new OrderDE(11223344L, "11223344", new Date(), new Date(), new DeliveryStatus(3L, 4002, "D"), new OrderStatus(3L, 1002, "estado 3"), new Dealer("1122", subsidiary), orderDetails));
 
         return orders;
     }
 
-    /*public static List<OrderDE> getOrdersDEDBWithFilters() {
-        List<OrderDE> orders = new ArrayList<>();
+    public static OrderCMResponseDTO getOrderCMResponse() {
+        List<OrderDetailCMDTO> orderDetails = new ArrayList<>();
 
-        orders.add(new OrderDE(11232323L, new Date()));
+        orderDetails.add(new OrderDetailCMDTO(12345678, "Motor V8", 5, "R", "Compra", "Estado 1"));
+        orderDetails.add(new OrderDetailCMDTO(87654321, "Caja de cambios", 20, "G", "Compra", "Estado 2"));
+        orderDetails.add(new OrderDetailCMDTO(11223344, "Llantas", 35, "R", "Compra", "Estado 3"));
+
+        List<OrderResponseCMDTO> list = new ArrayList<>();
+
+        list.add(new OrderResponseCMDTO("12345678", new Date(), "", orderDetails));
+
+        OrderCMResponseDTO order = new OrderCMResponseDTO(list);
+
+        return order;
+    }
+
+    public static List<OrderCM> getOrdersCMDB() {
+        List<OrderCM> orders = new ArrayList<>();
+        List<OrderDetail> orderDetails = new ArrayList<>();
+
+        List<Part> parts = getPartsDB();
+
+        AccountType accountType = new AccountType(1L, "R");
+        PartStatus partStatus = new PartStatus(1L, 3000, "Estado");
+
+        OrderDetail orderDetail = new OrderDetail(1L, parts.get(0), accountType, partStatus, 5);
+
+        orderDetails.add(orderDetail);
+
+        orderDetail = new OrderDetail(2L, parts.get(1), accountType, partStatus, 15);
+
+        orderDetails.add(orderDetail);
+
+        orderDetail = new OrderDetail(3L, parts.get(2), accountType, partStatus, 20);
+
+        orderDetails.add(orderDetail);
+
+        OrderStatus orderStatus = new OrderStatus(1L, 1000, "Estado");
+
+        orders.add(new OrderCM(1L, "12345678", new Date(), new Date(), orderStatus, orderDetails));
+        orders.add(new OrderCM(2L, "87654321", new Date(), new Date(), orderStatus, orderDetails));
+        orders.add(new OrderCM(3L, "11223344", new Date(), new Date(), orderStatus, orderDetails));
 
         return orders;
-    }*/
+    }
 }

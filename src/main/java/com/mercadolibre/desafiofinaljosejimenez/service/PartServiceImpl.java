@@ -60,9 +60,6 @@ public class PartServiceImpl implements PartService {
 
     @Override
     public String savePart(PartDTO partDTO){
-        // Validate parameters
-        //Validator.validPartDTO(partDTO);
-
         Part part = partRepository.findByPartCode(partDTO.getPartCode());
 
         if (part != null) {

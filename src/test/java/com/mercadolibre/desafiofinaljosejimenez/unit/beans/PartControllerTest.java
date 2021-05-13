@@ -1,6 +1,7 @@
 package com.mercadolibre.desafiofinaljosejimenez.unit.beans;
 
 import com.mercadolibre.desafiofinaljosejimenez.controller.PartController;
+import com.mercadolibre.desafiofinaljosejimenez.dtos.request.PartDTO;
 import com.mercadolibre.desafiofinaljosejimenez.dtos.response.PartResponseDTO;
 import com.mercadolibre.desafiofinaljosejimenez.exceptions.InvalidFilterInformation;
 import com.mercadolibre.desafiofinaljosejimenez.security.JwtTokenUtil;
@@ -38,7 +39,7 @@ public class PartControllerTest {
 
     @BeforeEach
     void setUp() {
-        MockitoAnnotations.initMocks(this);
+        MockitoAnnotations.openMocks(this);
 
         partController = new PartController(partService, jwtTokenUtil, jwtUserDetailsService);
     }
@@ -89,5 +90,19 @@ public class PartControllerTest {
         catch (InvalidFilterInformation e) {
             Assertions.assertTrue(e.getMessage().contains("Invalid date format"));
         }
+    }
+
+    @Test
+    @DisplayName("Saves a part")
+    public void savePart() throws Exception {
+        List<PartDTO> parts = GeneralTestUtils.getPartsDTO();
+
+        when(partService.savePart(any())).thenReturn("The part was added to the inventory successfully");
+        when(jwtTokenUtil.getUsernameFromToken(any())).thenReturn("User");
+        when(jwtUserDetailsService.autorizado(any(), any(), any())).thenReturn(true);
+
+        ResponseEntity<String> responseParts = (ResponseEntity<String>)partController.savePart(parts.get(0), null);
+
+        Assertions.assertTrue(responseParts.getBody().contains("The part was added to the inventory successfully"));
     }
 }
