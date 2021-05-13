@@ -48,7 +48,6 @@ public class OrderServiceImpl implements OrderService{
         List<OrderResponseDTO> result = dbOrders.stream().map(order -> { return OrderMapper.mapOrderToResponse(order); }).collect(Collectors.toList());
 
         return new OrderDEResponseDTO(params.get("dealerNumber"),result);
-
     }
 
     @Override
@@ -81,15 +80,10 @@ public class OrderServiceImpl implements OrderService{
                 orderDetail.setQuantity(partCode.getQuantity());
                 orderDetail= orderDetailRepository.save(orderDetail);
             }
-
             return "Order saved";
-
-
-
         } else {
             throw new NotFoundException("Subsidiary not Found");
         }
-
     }
 
     public OrderCMResponseDTO getOrdersCM(String orderNumber){
