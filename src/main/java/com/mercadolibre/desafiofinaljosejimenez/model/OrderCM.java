@@ -95,6 +95,17 @@ public class OrderCM {
         return Objects.hash(id, orderNumber,orderDate, deliveryDate, deliveryS, orderDetail, subsidiary);
     }
 
+    public OrderCM() {
+    }
+
+    public OrderCM(Long id, String orderNumber, Date orderDate, Date deliveryDate, OrderStatus orderStatus, List<OrderDetail> ordersDetail) {
+        this.id = id;
+        this.orderNumber = orderNumber;
+        this.orderDate = orderDate;
+        this.deliveryDate = deliveryDate;
+        this.orderStatus = orderStatus;
+        this.orderDetail = ordersDetail;
+    }
     public void setShippingType_id(Long shippingType_id) {
         this.shippingType_id = shippingType_id;
     }
@@ -114,7 +125,6 @@ public class OrderCM {
     public void setOrderType_id(Long orderType_id) {
         this.orderType_id = orderType_id;
     }
-
 
     public Long getId() {
         return id;

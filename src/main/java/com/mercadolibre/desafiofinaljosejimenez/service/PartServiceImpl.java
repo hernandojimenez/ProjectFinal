@@ -60,19 +60,16 @@ public class PartServiceImpl implements PartService {
 
     @Override
     public String savePart(PartDTO partDTO){
-        // Validate parameters
-        //Validator.validPartDTO(partDTO);
-
         Part part = partRepository.findByPartCode(partDTO.getPartCode());
 
-        if (part!= null) {
-            Optional<StockCM> stock = stockCMRepository.findByPart_id(part.getId());
-            if(!stock.isPresent()) throw new NotFoundException("No stock available for that part id");
-            int newQuantity = stock.get().getQuantity() + partDTO.getStock();
+        if (part != null) {
+            StockCM stock = stockCMRepository.findByPart_id(part.getId());
+            if(stock == null) throw new NotFoundException("No stock available for that part id");
+            int newQuantity = stock.getQuantity() + partDTO.getStock();
 
-            stock.get().setQuantity(newQuantity);
+            stock.setQuantity(newQuantity);
             
-            stockCMRepository.save(stock.get());
+            stockCMRepository.save(stock);
 
             return "The stock of the part was updated successfully";
         }

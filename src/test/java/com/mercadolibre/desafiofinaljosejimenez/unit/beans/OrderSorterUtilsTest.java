@@ -1,14 +1,10 @@
 package com.mercadolibre.desafiofinaljosejimenez.unit.beans;
 
-import com.mercadolibre.desafiofinaljosejimenez.dtos.response.OrderDEResponseDTO;
 import com.mercadolibre.desafiofinaljosejimenez.dtos.response.OrderResponseDTO;
-import com.mercadolibre.desafiofinaljosejimenez.dtos.response.PartResponseDTO;
 import com.mercadolibre.desafiofinaljosejimenez.model.OrderDE;
-import com.mercadolibre.desafiofinaljosejimenez.model.Part;
 import com.mercadolibre.desafiofinaljosejimenez.repositories.OrderRepository;
 import com.mercadolibre.desafiofinaljosejimenez.util.GeneralTestUtils;
 import com.mercadolibre.desafiofinaljosejimenez.util.OrderSorterUtils;
-import com.mercadolibre.desafiofinaljosejimenez.util.PartSorterUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -16,7 +12,6 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -30,7 +25,7 @@ public class OrderSorterUtilsTest {
 
     @BeforeEach
     void setUp() {
-        MockitoAnnotations.initMocks(this);
+        MockitoAnnotations.openMocks(this);
     }
 
     @Test

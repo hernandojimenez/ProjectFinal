@@ -25,6 +25,8 @@ public class AccountType {
 
     }
 
+
+
     public Long getId() {
         return id;
     }

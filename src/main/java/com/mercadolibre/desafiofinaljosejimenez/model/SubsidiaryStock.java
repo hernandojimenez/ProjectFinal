@@ -25,8 +25,7 @@ public class SubsidiaryStock {
     private Subsidiary subsidiary;
 
 
-    public SubsidiaryStock(Long id, Integer quantity, Part part, Subsidiary subsidiary) {
-        this.id = id;
+    public SubsidiaryStock( Integer quantity, Part part, Subsidiary subsidiary) {
         this.quantity = quantity;
         this.part = part;
         this.subsidiary = subsidiary;

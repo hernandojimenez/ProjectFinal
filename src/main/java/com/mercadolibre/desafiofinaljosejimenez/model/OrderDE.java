@@ -55,12 +55,14 @@ public class OrderDE {
     @OneToMany(mappedBy = "order_de", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     private List<OrderDetailDE> orderDetailDE;
 
-    public OrderDE(Long id, Date orderDate, Date deliveryDate, DeliveryStatus deliveryS, OrderStatus orderStatus, List<OrderDetailDE> orderDetailDE) {
+    public OrderDE(Long id, String orderNumber, Date orderDate, Date deliveryDate, DeliveryStatus deliveryS, OrderStatus orderStatus, Dealer dealer, List<OrderDetailDE> orderDetailDE) {
         this.id = id;
+        this.orderNumber = orderNumber;
         this.orderDate = orderDate;
         this.deliveryDate = deliveryDate;
         this.deliveryS = deliveryS;
         this.orderStatus = orderStatus;
+        this.dealer = dealer;
         this.orderDetailDE = orderDetailDE;
     }
 
