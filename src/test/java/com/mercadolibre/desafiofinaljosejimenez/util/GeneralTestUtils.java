@@ -1,6 +1,10 @@
 package com.mercadolibre.desafiofinaljosejimenez.util;
 
+import com.mercadolibre.desafiofinaljosejimenez.dtos.internal.PartQuantityDTO;
+import com.mercadolibre.desafiofinaljosejimenez.dtos.request.OrderDTO;
 import com.mercadolibre.desafiofinaljosejimenez.dtos.request.PartDTO;
+import com.mercadolibre.desafiofinaljosejimenez.dtos.request.UpdateDeliveryDTO;
+import com.mercadolibre.desafiofinaljosejimenez.dtos.request.UpdateOrderDTO;
 import com.mercadolibre.desafiofinaljosejimenez.dtos.response.*;
 import com.mercadolibre.desafiofinaljosejimenez.model.*;
 import org.aspectj.weaver.ast.Or;
@@ -160,12 +164,88 @@ public class GeneralTestUtils {
 
         orderDetails.add(orderDetail);
 
-        OrderStatus orderStatus = new OrderStatus(1L, 1000, "Estado");
+        OrderStatus orderStatus = new OrderStatus(1L, 1000, "F");
 
         orders.add(new OrderCM(1L, "12345678", new Date(), new Date(), orderStatus, orderDetails));
         orders.add(new OrderCM(2L, "87654321", new Date(), new Date(), orderStatus, orderDetails));
         orders.add(new OrderCM(3L, "11223344", new Date(), new Date(), orderStatus, orderDetails));
 
         return orders;
+    }
+
+    public static List<OrderCM> getOrdersCancelledCMDB() {
+        List<OrderCM> orders = new ArrayList<>();
+        List<OrderDetail> orderDetails = new ArrayList<>();
+
+        List<Part> parts = getPartsDB();
+
+        AccountType accountType = new AccountType(1L, "R");
+        PartStatus partStatus = new PartStatus(1L, 3000, "Estado");
+
+        OrderDetail orderDetail = new OrderDetail(1L, parts.get(0), accountType, partStatus, 5);
+
+        orderDetails.add(orderDetail);
+
+        orderDetail = new OrderDetail(2L, parts.get(1), accountType, partStatus, 15);
+
+        orderDetails.add(orderDetail);
+
+        orderDetail = new OrderDetail(3L, parts.get(2), accountType, partStatus, 20);
+
+        orderDetails.add(orderDetail);
+
+        OrderStatus orderStatus = new OrderStatus(1L, 1000, "C");
+
+        orders.add(new OrderCM(1L, "12345678", new Date(), new Date(), orderStatus, orderDetails));
+        orders.add(new OrderCM(2L, "87654321", new Date(), new Date(), orderStatus, orderDetails));
+        orders.add(new OrderCM(3L, "11223344", new Date(), new Date(), orderStatus, orderDetails));
+
+        return orders;
+    }
+
+    public static List<OrderDTO> getOrdersDTO() {
+        List<OrderDTO> orders = new ArrayList<>();
+
+        List<PartQuantityDTO> parts = new ArrayList<>();
+
+        parts.add(new PartQuantityDTO(12345678, 5));
+        parts.add(new PartQuantityDTO(87654321, 3));
+        parts.add(new PartQuantityDTO(11223344, 7));
+
+        orders.add(new OrderDTO("1234", "12345678", parts));
+
+        return orders;
+    }
+
+    public static List<UpdateOrderDTO> getUpdateOrdersDTO() {
+        List<UpdateOrderDTO> orders = new ArrayList<>();
+
+        orders.add(new UpdateOrderDTO("12345678", "P"));
+        orders.add(new UpdateOrderDTO("12345678", "C"));
+        orders.add(new UpdateOrderDTO("12345678", "F"));
+        orders.add(new UpdateOrderDTO("12345678", "D"));
+
+        return orders;
+    }
+
+    public static List<UpdateDeliveryDTO> getUpdateDeliveriesDTO() {
+        List<UpdateDeliveryDTO> deliveries = new ArrayList<>();
+
+        deliveries.add(new UpdateDeliveryDTO("12345678", "P"));
+        deliveries.add(new UpdateDeliveryDTO("12345678", "C"));
+        deliveries.add(new UpdateDeliveryDTO("12345678", "F"));
+        deliveries.add(new UpdateDeliveryDTO("12345678", "D"));
+
+        return deliveries;
+    }
+
+    public static List<Subsidiary> getSubsidiaries() {
+        List<Subsidiary> subsidiaries = new ArrayList<>();
+
+        subsidiaries.add(new Subsidiary(1L, "1234", "Sub1", "Corrientes", "1144554433", "Argentina", 10));
+        subsidiaries.add(new Subsidiary(2L, "4321", "Sub2", "Callao", "1122554433", "Argentina", 5));
+        subsidiaries.add(new Subsidiary(3L, "1122", "Sub3", "Independencia", "1133554433", "Argentina", 2));
+
+        return subsidiaries;
     }
 }

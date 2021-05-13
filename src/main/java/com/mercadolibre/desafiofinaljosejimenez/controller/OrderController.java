@@ -66,7 +66,7 @@ public class OrderController {
     }
 
     @PostMapping("/orders/update_delivery_status")
-    public ResponseEntity<StatusCodeDTO> updateOrder(@Valid @RequestBody UpdateDeliveryDTO updateDeliveryDTO, @RequestHeader("Authorization") String token) throws Exception {
+    public ResponseEntity<StatusCodeDTO> updateDeliveryStatus(@Valid @RequestBody UpdateDeliveryDTO updateDeliveryDTO, @RequestHeader("Authorization") String token) throws Exception {
         String username = jwtTokenUtil.getUsernameFromToken(token);
         boolean res = jwtUserDetailsService.autorizado(username, new HashMap<>(),"");
         return new ResponseEntity<>(orderService.updateDeliveryStatus(updateDeliveryDTO), HttpStatus.CREATED);

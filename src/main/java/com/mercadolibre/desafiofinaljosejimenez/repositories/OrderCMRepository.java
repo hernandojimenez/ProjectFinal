@@ -24,5 +24,5 @@ public interface OrderCMRepository extends JpaRepository<OrderCM,Long> {
             "ORDER BY ode.orderDate ASC")
     List<OrderCM> findBySubsidiaryAndDealerAndOrderNumberAscending(@Param("subsidiaryNumber") String subsidiaryNumber,@Param("dealerNumber") String dealerNumber,@Param("orderNumber") String orderNumber);
 
-    Optional<OrderCM> findOrderCMSByOrderNumber(@Param("orderNumber") String orderNumber);
+    OrderCM findOrderCMSByOrderNumber(@Param("orderNumber") String orderNumber);
 }

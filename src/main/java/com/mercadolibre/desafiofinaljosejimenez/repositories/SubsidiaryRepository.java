@@ -9,5 +9,5 @@ import java.util.Optional;
 @Repository
 public interface SubsidiaryRepository extends JpaRepository<Subsidiary,Long> {
 
-    Optional<Subsidiary> findBySubsidiaryNumber(String subsidiaryNumber);
+    Subsidiary findBySubsidiaryNumber(String subsidiaryNumber);
 }

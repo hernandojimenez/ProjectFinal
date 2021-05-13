@@ -63,10 +63,10 @@ public class OrderServiceImpl implements OrderService {
     @Transactional(rollbackOn = Exception.class)
     public StatusCodeDTO saveOrder(OrderDTO orderDTO) throws Exception {
 
-        Optional<Subsidiary> subsidiary = subsidiaryRepository.findBySubsidiaryNumber(orderDTO.getSubsidiaryNumber());
-        Optional<OrderCM> orderCMFromRepo = orderCMRepository.findOrderCMSByOrderNumber(orderDTO.getOrderNumber());
-        if (subsidiary.isPresent()) {
-            if(orderCMFromRepo.isPresent()) throw new OrderNumberException("Order Number " + orderDTO.getOrderNumber() + "already exists");
+        Subsidiary subsidiary = subsidiaryRepository.findBySubsidiaryNumber(orderDTO.getSubsidiaryNumber());
+        OrderCM orderCMFromRepo = orderCMRepository.findOrderCMSByOrderNumber(orderDTO.getOrderNumber());
+        if (subsidiary != null) {
+            if(orderCMFromRepo == null) throw new OrderNumberException("Order Number " + orderDTO.getOrderNumber() + "already exists");
 
             OrderCM orderCM = new OrderCM();
             String orderNumber = orderDTO.getOrderNumber();
@@ -76,7 +76,7 @@ public class OrderServiceImpl implements OrderService {
             orderCM.setCarrier_id(1L);
             orderCM.setOrderStatus_id(2L);
             orderCM.setOrderType_id(1L);
-            orderCM.setSubsidiary(subsidiary.get());
+            orderCM.setSubsidiary(subsidiary);
             orderCM = orderCMRepository.save(orderCM);
 
             for (PartQuantityDTO partCode : orderDTO.getParts()) {
@@ -102,20 +102,20 @@ public class OrderServiceImpl implements OrderService {
     //update order Status
     public StatusCodeDTO updateOrderStatus(UpdateOrderDTO updateOrderDTO) throws NotFoundException {
         //bring order cm with order number
-        Optional<OrderCM> orderCM = orderCMRepository.findOrderCMSByOrderNumber(updateOrderDTO.getOrderNumber());
-        if (!orderCM.isPresent()) throw new NotFoundException("Order not found");
+        OrderCM orderCM = orderCMRepository.findOrderCMSByOrderNumber(updateOrderDTO.getOrderNumber());
+        if (orderCM == null) throw new NotFoundException("Order not found");
 
         // if order is finished
-        if (orderCM.get().getOrderStatus().getDescription().equals("F"))
+        if (orderCM.getOrderStatus().getDescription().equals("F"))
             throw new NotFoundException("Order is already finished");
 
         // if order is cancelled
-        if (orderCM.get().getOrderStatus().getDescription().equals("C"))
+        if (orderCM.getOrderStatus().getDescription().equals("C"))
             throw new NotFoundException("Order is already cancelled");
 
 
         //change status
-        return updateSpecificOrder(updateOrderDTO.getOrderStatus(), orderCM.get());
+        return updateSpecificOrder(updateOrderDTO.getOrderStatus(), orderCM);
 
     }
 
@@ -129,18 +129,19 @@ public class OrderServiceImpl implements OrderService {
             case "C":
                 orderCM.setOrderStatus_id(1L);
                 orderCM.setDeliveryDate(new Date());
-
+                break;
             case "P":
                 orderCM.setOrderStatus_id(2L);
-
+                break;
             case "D":
                 orderCM.setOrderStatus_id(3L);
-
+                break;
             case "F":
                 updateFinishedOrder(orderCM);
                 orderCM.setOrderStatus_id(4L);
-
+                break;
         }
+
         OrderCM save = orderCMRepository.save(orderCM);
         return new StatusCodeDTO(200, "Order changed to " + updateOrderStatus + " Successfully");
 
@@ -180,19 +181,19 @@ public class OrderServiceImpl implements OrderService {
     public StatusCodeDTO updateDeliveryStatus(UpdateDeliveryDTO updateDeliveryDTO) throws NotFoundException {
 
         //bring order cm with order number
-        Optional<OrderCM> orderCM = orderCMRepository.findOrderCMSByOrderNumber(updateDeliveryDTO.getOrderNumber());
-        if (!orderCM.isPresent()) throw new NotFoundException("Order not found");
+        OrderCM orderCM = orderCMRepository.findOrderCMSByOrderNumber(updateDeliveryDTO.getOrderNumber());
+        if (orderCM == null) throw new NotFoundException("Order not found");
 
         // if deliver is finished
-        if (orderCM.get().getDeliveryS().getDescription().equals("F"))
+        if (orderCM.getDeliveryS().getDescription().equals("F"))
             throw new NotFoundException("Deliver is already finished");
 
         // if deliver is cancelled
-        if (orderCM.get().getDeliveryS().getDescription().equals("C"))
+        if (orderCM.getDeliveryS().getDescription().equals("C"))
             throw new NotFoundException("Deliver is already cancelled");
 
         //change status
-        return updateSpecificDelivery(updateDeliveryDTO.getDeliveryStatus(), orderCM.get());
+        return updateSpecificDelivery(updateDeliveryDTO.getDeliveryStatus(), orderCM);
 
     }
 

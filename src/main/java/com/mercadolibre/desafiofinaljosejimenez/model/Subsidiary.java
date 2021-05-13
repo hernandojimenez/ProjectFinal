@@ -56,6 +56,16 @@ public class Subsidiary {
         this.subsidiaryNumber = subsidiaryNumber;
     }
 
+    public Subsidiary(Long id, String subsidiaryNumber, String name, String address, String phone, String country, Integer daysToShipping) {
+        this.id = id;
+        this.subsidiaryNumber = subsidiaryNumber;
+        this.name = name;
+        this.address = address;
+        this.phone = phone;
+        this.country = country;
+        this.daysToShipping = daysToShipping;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
