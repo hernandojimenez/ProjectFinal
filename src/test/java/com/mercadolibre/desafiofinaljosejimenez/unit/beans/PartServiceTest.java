@@ -20,6 +20,7 @@ import org.mockito.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Optional;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
@@ -93,6 +94,7 @@ public class PartServiceTest {
         PartDTO part = GeneralTestUtils.getPartsDTO().get(1);
 
         when(partRepository.findByPartCode(10000010)).thenReturn(new Part(2L));
+
         when(stockCMRepository.findByPart_id(any())).thenReturn(new StockCM(10, 1L, 1L));
         when(stockCMRepository.save(any())).thenReturn(new StockCM());
 

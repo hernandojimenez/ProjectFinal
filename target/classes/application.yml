@@ -30,3 +30,7 @@ app:
   title: desafiofinaljosejimenez
   description: desafiofinaljosejimenez
   version: last
+
+  #logging:
+   # level:
+    #  root: info # permite ver los logs de consola

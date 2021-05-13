@@ -85,4 +85,76 @@ public class Subsidiary {
     public void setDealers(Set<Dealer> dealers) {
         this.dealers = dealers;
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public Integer getDaysToShipping() {
+        return daysToShipping;
+    }
+
+    public void setDaysToShipping(Integer daysToShipping) {
+        this.daysToShipping = daysToShipping;
+    }
+
+    public Set<OrderCM> getOrderCm() {
+        return orderCm;
+    }
+
+    public void setOrderCm(Set<OrderCM> orderCm) {
+        this.orderCm = orderCm;
+    }
+
+    public List<SubsidiaryStock> getSubsidiaryStocks() {
+        return subsidiaryStocks;
+    }
+
+    public void setSubsidiaryStocks(List<SubsidiaryStock> subsidiaryStocks) {
+        this.subsidiaryStocks = subsidiaryStocks;
+    }
+
+    public List<UserCentral> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<UserCentral> users) {
+        this.users = users;
+    }
 }

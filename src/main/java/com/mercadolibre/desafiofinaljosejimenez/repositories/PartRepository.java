@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface PartRepository extends JpaRepository<Part, Long> {
@@ -53,6 +54,8 @@ public interface PartRepository extends JpaRepository<Part, Long> {
             "or pr.modifiedField = 'urgent_price' " +
             "order by pr.lastModification desc")
     List<Part> findByModifiedPriceDesc(@Param("date") Date date);
+
+    Part findByPartCodeAndProvider_id(int partCode,Long providerId);
 
     Part findByPartCode(int partCode);
 }

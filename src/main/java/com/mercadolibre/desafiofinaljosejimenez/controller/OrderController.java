@@ -1,8 +1,11 @@
 package com.mercadolibre.desafiofinaljosejimenez.controller;
 
 import com.mercadolibre.desafiofinaljosejimenez.dtos.request.OrderDTO;
+import com.mercadolibre.desafiofinaljosejimenez.dtos.request.UpdateDeliveryDTO;
+import com.mercadolibre.desafiofinaljosejimenez.dtos.request.UpdateOrderDTO;
 import com.mercadolibre.desafiofinaljosejimenez.dtos.response.OrderCMResponseDTO;
 import com.mercadolibre.desafiofinaljosejimenez.dtos.response.OrderDEResponseDTO;
+import com.mercadolibre.desafiofinaljosejimenez.dtos.response.StatusCodeDTO;
 import com.mercadolibre.desafiofinaljosejimenez.security.JwtTokenUtil;
 import com.mercadolibre.desafiofinaljosejimenez.service.JwtUserDetailsService;
 import com.mercadolibre.desafiofinaljosejimenez.service.OrderService;
@@ -10,6 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -46,10 +50,27 @@ public class OrderController {
     }
 
     @PostMapping("/orders")
-    public ResponseEntity<?> saveOrderPart(@RequestBody OrderDTO order, @RequestHeader("Authorization") String token) throws Exception {
+    public ResponseEntity<StatusCodeDTO> saveOrder(@Valid @RequestBody OrderDTO order, @RequestHeader("Authorization") String token) throws Exception {
         String username = jwtTokenUtil.getUsernameFromToken(token);
         boolean res = jwtUserDetailsService.autorizado(username, new HashMap<>(),"");
 
         return new ResponseEntity(orderService.saveOrder(order), HttpStatus.CREATED);
     }
+
+    @PostMapping("/orders/update_status")
+    public ResponseEntity<StatusCodeDTO> updateOrder(@Valid @RequestBody UpdateOrderDTO updateOrderDTO, @RequestHeader("Authorization") String token) throws Exception {
+        String username = jwtTokenUtil.getUsernameFromToken(token);
+        boolean res = jwtUserDetailsService.autorizado(username, new HashMap<>(),"");
+
+        return new ResponseEntity<>(orderService.updateOrderStatus(updateOrderDTO), HttpStatus.CREATED);
+    }
+
+    @PostMapping("/orders/update_delivery_status")
+    public ResponseEntity<StatusCodeDTO> updateOrder(@Valid @RequestBody UpdateDeliveryDTO updateDeliveryDTO, @RequestHeader("Authorization") String token) throws Exception {
+        String username = jwtTokenUtil.getUsernameFromToken(token);
+        boolean res = jwtUserDetailsService.autorizado(username, new HashMap<>(),"");
+        return new ResponseEntity<>(orderService.updateDeliveryStatus(updateDeliveryDTO), HttpStatus.CREATED);
+    }
+
+
 }
