@@ -19,6 +19,12 @@ public class OrderDTO {
     @NotNull(message = "Parts must not be null")
     List<PartQuantityDTO> parts;
 
+    public OrderDTO(@NotNull(message = "Subsidiary Number must not be null") @Pattern(regexp = "^[0-9]{1,8}$", message = "Subsidiary Number must have to 8 digits") String subsidiaryNumber, @NotNull(message = "Order Number must not be null") @Pattern(regexp = "^[0-9]{8}$", message = "Order Number must have 8 digits") String orderNumber, @NotNull(message = "Parts must not be null") List<PartQuantityDTO> parts) {
+        this.subsidiaryNumber = subsidiaryNumber;
+        this.orderNumber = orderNumber;
+        this.parts = parts;
+    }
+
     public String getSubsidiaryNumber() {
         return subsidiaryNumber;
     }

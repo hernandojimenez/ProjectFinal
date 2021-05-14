@@ -1,8 +1,12 @@
 package com.mercadolibre.desafiofinaljosejimenez.unit.beans;
 
 import com.mercadolibre.desafiofinaljosejimenez.controller.OrderController;
+import com.mercadolibre.desafiofinaljosejimenez.dtos.request.OrderDTO;
+import com.mercadolibre.desafiofinaljosejimenez.dtos.request.UpdateDeliveryDTO;
+import com.mercadolibre.desafiofinaljosejimenez.dtos.request.UpdateOrderDTO;
 import com.mercadolibre.desafiofinaljosejimenez.dtos.response.OrderCMResponseDTO;
 import com.mercadolibre.desafiofinaljosejimenez.dtos.response.OrderDEResponseDTO;
+import com.mercadolibre.desafiofinaljosejimenez.dtos.response.StatusCodeDTO;
 import com.mercadolibre.desafiofinaljosejimenez.exceptions.InvalidFilterInformation;
 import com.mercadolibre.desafiofinaljosejimenez.security.JwtTokenUtil;
 import com.mercadolibre.desafiofinaljosejimenez.service.JwtUserDetailsService;
@@ -105,5 +109,49 @@ public class OrderControllerTest {
         ResponseEntity<OrderDEResponseDTO> responseOrder = (ResponseEntity<OrderDEResponseDTO>) orderController.getOrders(filters, "12345678", null);
 
         Assertions.assertEquals(order, responseOrder.getBody());
+    }
+
+    @Test
+    @DisplayName("Saves an order")
+    public void saveOrder() throws Exception {
+        OrderDTO order = GeneralTestUtils.getOrdersDTO().get(0);
+
+        when(orderService.saveOrder(any())).thenReturn(new StatusCodeDTO(200, "Order saved successfully"));
+        when(jwtTokenUtil.getUsernameFromToken(any())).thenReturn("User");
+        when(jwtUserDetailsService.autorizado(any(), any(), any())).thenReturn(true);
+
+        ResponseEntity<StatusCodeDTO> responseStatus = orderController.saveOrder(order, null);
+
+        Assertions.assertEquals("Order saved successfully", responseStatus.getBody().getMessage());
+    }
+
+    @Test
+    @DisplayName("Updates an order")
+    public void updateOrder() throws Exception {
+        UpdateOrderDTO order = GeneralTestUtils.getUpdateOrdersDTO().get(0);
+
+        when(orderService.updateOrderStatus(any())).thenReturn(new StatusCodeDTO(200, "OK"));
+        when(jwtTokenUtil.getUsernameFromToken(any())).thenReturn("User");
+        when(jwtUserDetailsService.autorizado(any(), any(), any())).thenReturn(true);
+
+        ResponseEntity<StatusCodeDTO> responseStatus = orderController.updateOrder(order, null);
+
+        Assertions.assertEquals(200, responseStatus.getBody().getNumber());
+        Assertions.assertEquals("OK", responseStatus.getBody().getMessage());
+    }
+
+    @Test
+    @DisplayName("Updates delivery status of an order")
+    public void updateDeliveryStatus() throws Exception {
+        UpdateDeliveryDTO delivery = GeneralTestUtils.getUpdateDeliveriesDTO().get(0);
+
+        when(orderService.updateDeliveryStatus(any())).thenReturn(new StatusCodeDTO(200, "OK"));
+        when(jwtTokenUtil.getUsernameFromToken(any())).thenReturn("User");
+        when(jwtUserDetailsService.autorizado(any(), any(), any())).thenReturn(true);
+
+        ResponseEntity<StatusCodeDTO> responseStatus = orderController.updateDeliveryStatus(delivery, null);
+
+        Assertions.assertEquals(200, responseStatus.getBody().getNumber());
+        Assertions.assertEquals("OK", responseStatus.getBody().getMessage());
     }
 }

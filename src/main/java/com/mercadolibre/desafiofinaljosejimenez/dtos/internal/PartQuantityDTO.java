@@ -11,6 +11,11 @@ public class PartQuantityDTO {
     @Digits(integer=4,fraction = 0, message = "part code must have up to 4 numbers")
     private int quantity;
 
+    public PartQuantityDTO(@Digits(integer = 4, fraction = 0, message = "part code must have up to 4 numbers") int partCode, @Digits(integer = 4, fraction = 0, message = "part code must have up to 4 numbers") int quantity) {
+        this.partCode = partCode;
+        this.quantity = quantity;
+    }
+
     public int getPartCode() {
         return partCode;
     }
