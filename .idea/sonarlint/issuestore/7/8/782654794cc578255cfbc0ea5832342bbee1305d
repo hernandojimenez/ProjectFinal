@@ -1,0 +1,23 @@
+
+Q
+java:S3740,"/Provide the parametrized type for this generic.(ë¬í·úÿÿÿÿ8¹ëù¯–/
+L
+java:S37400"/Provide the parametrized type for this generic.(¤åÙ8ºëù¯–/
+L
+java:S37409"/Provide the parametrized type for this generic.(œÒ˜¥8»ëù¯–/
+H
+java:S1452%"&Remove usage of generic wildcard type.(†ã”ùúÿÿÿÿ8Äëù¯–/
+Q
+java:S6212'"/Declare this local variable with "var" instead.(½ºÂëıÿÿÿÿ8Æëù¯–/
+Q
+java:S6212("/Declare this local variable with "var" instead.(êƒä‚şÿÿÿÿ8Çëù¯–/
+E
+java:S1481*"(Remove this unused "res" local variable.(é Ã8Õëù¯–/
+J
+java:S1481/"(Remove this unused "res" local variable.(ã½œ¶üÿÿÿÿ8Öëù¯–/
+J
+java:S14817"(Remove this unused "res" local variable.(®şå¯úÿÿÿÿ8Öëù¯–/
+J
+java:S1481?"(Remove this unused "res" local variable.(®şå¯úÿÿÿÿ8Öëù¯–/
+J
+java:S1481G"(Remove this unused "res" local variable.(®şå¯úÿÿÿÿ8×ëù¯–/

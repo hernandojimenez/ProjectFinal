@@ -1,0 +1,6 @@
+
+W	java:S107"BConstructor has 12 parameters, which is greater than 7 authorized.(ı§·‚
+H
+java:S1128"+Remove this unused import 'java.util.Date'.(¸…¼ü8ÈíŞ–/
+S
+java:S1128"6Remove this unused import 'javax.persistence.OrderBy'.(Õ¤‚¨8Áıèğ“/

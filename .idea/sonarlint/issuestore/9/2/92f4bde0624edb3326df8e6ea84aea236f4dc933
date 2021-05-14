@@ -1,0 +1,15 @@
+
+S
+java:S1444"1Make this "public static DATE_FORMAT" field final(ù”åÖúÿÿÿÿ8Ô÷æ–/
+y
+java:S1104"WMake DATE_FORMAT a static final constant or non-public and provide accessors if needed.(ù”åÖúÿÿÿÿ8Ù÷æ–/
+R
+java:S1128"0Remove this unused import 'java.time.LocalDate'.(›‘¬èıÿÿÿÿ8Û÷æ–/
+U
+java:S1128"8Remove this unused import 'java.time.DateTimeException'.(úÛ”™8Ë­£ê“/
+J
+java:S1128"-Remove this unused import 'java.time.ZoneId'.( Æ½“8Ş÷æ–/
+x
+java:S3008"VRename this field "DATE_FORMAT" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ù”åÖúÿÿÿÿ8ß÷æ–/
+P
+java:S1118":Add a private constructor to hide the implicit public one.(Ò®ÜÄ

@@ -1,0 +1,10 @@
+
+r	java:S117B"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¢ÇĞ“úÿÿÿÿ8™ûå–/
+r	java:S117J"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ø¾Àûÿÿÿÿ8™ûå–/
+s	java:S116"XRename this field "subsidiary_id" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÑïîJ8›ûå–/
+v	java:S116!"ZRename this field "main_subsidiary" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(“ªü8›ûå–/
+~	java:S116$"]Rename this field "main_subsidiary_id" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‚ò†ûÿÿÿÿ8›ûå–/
+o	java:S100>"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(û«ººÿÿÿÿÿ8ûå–/
+o	java:S100B"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¢ÇĞ“úÿÿÿÿ8Ÿûå–/
+o	java:S100F"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÕæºŞûÿÿÿÿ8Ÿûå–/
+o	java:S100J"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ø¾Àûÿÿÿÿ8 ûå–/
