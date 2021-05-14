@@ -116,14 +116,13 @@ public class OrderControllerTest {
     public void saveOrder() throws Exception {
         OrderDTO order = GeneralTestUtils.getOrdersDTO().get(0);
 
-        when(orderService.saveOrder(any())).thenReturn(new StatusCodeDTO(200, "OK"));
+        when(orderService.saveOrder(any())).thenReturn(new StatusCodeDTO(200, "Order saved successfully"));
         when(jwtTokenUtil.getUsernameFromToken(any())).thenReturn("User");
         when(jwtUserDetailsService.autorizado(any(), any(), any())).thenReturn(true);
 
         ResponseEntity<StatusCodeDTO> responseStatus = orderController.saveOrder(order, null);
 
-        Assertions.assertEquals(200, responseStatus.getBody().getNumber());
-        Assertions.assertEquals("OK", responseStatus.getBody().getMessage());
+        Assertions.assertEquals("Order saved successfully", responseStatus.getBody().getMessage());
     }
 
     @Test

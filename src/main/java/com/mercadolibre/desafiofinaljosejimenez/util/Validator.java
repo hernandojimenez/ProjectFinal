@@ -90,7 +90,6 @@ public class Validator {
         catch (NumberFormatException nfe) {
             return false;
         }
-
         return true;
     }
 

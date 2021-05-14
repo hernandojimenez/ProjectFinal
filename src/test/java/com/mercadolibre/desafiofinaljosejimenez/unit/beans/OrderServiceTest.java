@@ -90,7 +90,7 @@ public class OrderServiceTest {
         OrderCM orderCM = GeneralTestUtils.getOrdersCMDB().get(0);
 
         when(subsidiaryRepository.findBySubsidiaryNumber(any())).thenReturn(subsidiary);
-        when(orderCMRepository.findOrderCMSByOrderNumber(any())).thenReturn(orderCM);
+        when(orderCMRepository.findOrderCMSByOrderNumber(any())).thenReturn(null);
         when(orderCMRepository.save(any())).thenReturn(orderCM);
         when(partRepository.findByPartCodeAndProvider_id(12345678, 2L)).thenReturn(new Part(1L));
         when(partRepository.findByPartCodeAndProvider_id(87654321, 2L)).thenReturn(new Part(2L));
